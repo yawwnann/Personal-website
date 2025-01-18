@@ -2,6 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Untuk mencegah scroll horizontal jika ada elemen keluar layar */
+}
+
+body {
+  overflow-x: hidden;
+}
+
 /* =========================================
    Animasi untuk Saly-13 (Loop Up-Down)
 ========================================= */
@@ -82,8 +93,8 @@
 .bg-gradient-balls {
   background: radial-gradient(
     circle,
-    rgba(8, 0, 65, 0.925) 10%,
-    rgba(11, 3, 49, 0.295) 40%
+    rgba(7, 0, 61, 0.925) 10%,
+    rgba(0, 0, 0, 0.295) 40%
   );
   background-size: 200% 200%;
   animation: gradientMove 10s ease infinite;
@@ -92,7 +103,65 @@
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 0; /* Pastikan berada di bawah elemen lain */
+  z-index: 1;
   filter: blur(20px);
   -webkit-filter: blur(20px);
 }
+
+/* =========================================
+   Z INDEX
+========================================= */
+/* Pastikan header berada di lapisan paling atas */
+header {
+  z-index: 999;
+  position: fixed;
+}
+
+/* Pastikan bg-gradient-balls berada di lapisan paling belakang */
+.bg-gradient-balls {
+  z-index: 0;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Gambar karakter di belakang teks */
+.character-image {
+  z-index: 1;
+  position: absolute;
+}
+
+/* Gambar tangan di belakang teks */
+.hand-image {
+  z-index: 0;
+  position: absolute;
+}
+/* =========================================
+   RUNNING TEKS
+========================================= */
+/* @keyframes marquee {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 15s linear infinite;
+}
+
+@keyframes marquee-right {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-marquee-right {
+  animation: marquee-right 15s linear infinite;
+} */

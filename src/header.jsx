@@ -3,11 +3,11 @@ import { useState } from "react";
 const Header = () => {
   const [active, setActive] = useState("home");
 
-  const buttonWidth = 100; // Tentukan lebar tombol
-  const gap = 15; // Jarak antar tombol, sesuaikan jika perlu
+  const buttonWidth = 100;
+  const gap = 15;
 
   return (
-    <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 bg-gray-800 py-3 px-6 rounded-full  shadow-lg">
+    <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 bg-gray-800/70 backdrop-blur-sm py-3 px-6 rounded-full shadow-lg z-[999]">
       <ul className="relative flex justify-center space-x-8">
         {/* Background oranye animasi */}
         <div
@@ -27,7 +27,6 @@ const Header = () => {
             }px)`,
           }}
         ></div>
-
         {/* Tombol Header (Home) */}
         <li className="relative z-10">
           <button
