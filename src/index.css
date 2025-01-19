@@ -140,28 +140,3 @@ header {
 /* =========================================
    RUNNING TEKS
 ========================================= */
-/* @keyframes marquee {
-  0% {
-    transform: translateX(100%);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
-}
-
-.animate-marquee {
-  animation: marquee 15s linear infinite;
-}
-
-@keyframes marquee-right {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(100%);
-  }
-}
-
-.animate-marquee-right {
-  animation: marquee-right 15s linear infinite;
-} */

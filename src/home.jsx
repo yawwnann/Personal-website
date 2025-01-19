@@ -6,14 +6,14 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 const roles = ["Graphic Designer", "Web Developer", "UI/UX Designer"];
+const runningText =
+  "✦   Developer   ✦   Graphic Designer   ✦   Video Editing   ✦   UI/UX Design   ✦   Front End Developer   ✦  Web Developer";
 
 export const Home = () => {
   const [roleIndex, setRoleIndex] = useState(0);
   const [displayedText, setDisplayedText] = useState("");
   const [charIndex, setCharIndex] = useState(0);
   const [isTyping, setIsTyping] = useState(true);
-  const runningText =
-    "✦   Developer   ✦   Graphic Designer   ✦   Video Editing   ✦   UI/UX Design   ✦   Front End Developer   ✦  Web Developer";
 
   useEffect(() => {
     AOS.init({
@@ -58,7 +58,7 @@ export const Home = () => {
     marqueeContainer.innerHTML += content;
 
     let startPos = 0;
-    const speed = 2;
+    const speed = 1;
 
     const animate = () => {
       startPos -= speed;
