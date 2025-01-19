@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import { FaGithub, FaTwitter, FaFacebook } from "react-icons/fa";
 import Header from "./header";
+import MySkills from "./MySkills";
 import AboutSection from "./about_section";
+
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -84,15 +86,15 @@ export const Home = () => {
       <div className="relative min-h-screen flex flex-col z-10 items-center justify-center">
         <div className="text-center max-w-3xl" data-aos="fade-up">
           <span className="text-xl font-[Poppins] bg-transparency border-2 py-2 px-4 rounded-full transition-transform transform hover:scale-110 duration-500 ease-in-out">
-            Hello Gaes 👋{" "}
+            Hello Gaes
           </span>
           <h1 className="text-6xl mt-4 font-extrabold mb-4 font-[Poppins]">
             <span>I am </span>
             <span className="text-orange-500 transition-transform transform hover:scale-110 duration-500 ease-in-out">
-              Nanta,
+              Nanta
             </span>
             <br />
-            <span className="text-5xl transition-transform transform hover:scale-110 duration-500 ease-in-out hover:cursor-default">
+            <span className="text-6xl  transition-transform transform hover:scale-110 duration-500 ease-in-out hover:cursor-default">
               {displayedText}
             </span>
             <span className="caret"></span>
@@ -155,6 +157,11 @@ export const Home = () => {
       {/* About Section */}
       <div id="about" data-section className="w-full">
         <AboutSection />
+      </div>
+
+      {/* MySkills */}
+      <div id="Myskills" data-section className="w-full">
+        <MySkills />
       </div>
     </div>
   );
