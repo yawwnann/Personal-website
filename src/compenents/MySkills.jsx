@@ -14,7 +14,7 @@ import {
   FaLaravel,
 } from "react-icons/fa";
 import { useAnimate } from "framer-motion";
-import IconApp from "./icon";
+import Tools from "./Tools";
 
 const NO_CLIP = "polygon(0 0, 100% 0, 100% 100%, 0% 100%)";
 const BOTTOM_RIGHT_CLIP = "polygon(0 0, 100% 0, 0 0, 0% 100%)";
@@ -79,7 +79,7 @@ const MySkills = () => {
           <br />
           <span>Tools I Use</span>
         </h2>
-        <IconApp />
+        <Tools />
       </div>
     </div>
   );

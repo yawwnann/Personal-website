@@ -19,6 +19,25 @@ const AboutSection = () => {
     });
   }, []);
 
+  const containerVariants = {
+    hidden: { opacity: 0.5, scale: 0.9, y: 50 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      y: 0,
+      transition: {
+        duration: 1,
+        ease: "easeInOut",
+        when: "beforeChildren",
+        staggerChildren: 0.05, // Animasi antar kata
+      },
+    },
+  };
+
+  const wordVariants = {
+    hidden: { opacity: 0, y: 10 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  };
   useEffect(() => {
     // Mengatur animasi marquee kanan
     const marqueeContainersRight = document.querySelectorAll(
@@ -68,27 +87,6 @@ const AboutSection = () => {
 
     requestAnimationFrame(animate);
   }, []);
-
-  const containerVariants = {
-    hidden: { opacity: 0.5, scale: 0.9, y: 50 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      y: 0,
-      transition: {
-        duration: 1,
-        ease: "easeInOut",
-        when: "beforeChildren",
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const wordVariants = {
-    hidden: { opacity: 0, y: 10 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-  };
-
   return (
     <motion.section
       className="relative bg-black text-black w-full py-16 px-6 flex flex-col items-center justify-center"
@@ -131,7 +129,7 @@ const AboutSection = () => {
           <h2 className="text-4xl font-bold text-white mb-4">
             About <span className="text-orange-500">Me</span>
           </h2>
-          {/* Elemen <p> tanpa AOS */}
+          {/* Elemen <p> dengan animasi yang diperbaiki */}
           <motion.p
             className="text-lg text-white mb-6 leading-relaxed"
             variants={containerVariants}

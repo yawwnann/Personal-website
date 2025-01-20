@@ -12,9 +12,8 @@ const RunningText = ({ runningText }) => (
   </div>
 );
 
-// Validasi properti menggunakan PropTypes
 RunningText.propTypes = {
-  runningText: PropTypes.string.isRequired, // Properti ini wajib dan harus berupa string
+  runningText: PropTypes.string.isRequired,
 };
 
 export default RunningText;

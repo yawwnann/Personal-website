@@ -53,6 +53,27 @@ export const Home = () => {
     }
   }, [charIndex, isTyping, roleIndex]);
 
+  useEffect(() => {
+    // Mengatur animasi marquee kiri
+    const marqueeContainerLeft = document.querySelector(".marquee-container");
+    const content = marqueeContainerLeft.innerHTML;
+    marqueeContainerLeft.innerHTML += content;
+
+    let startPos = 0;
+    const speed = 1;
+
+    const animate = () => {
+      startPos -= speed;
+      if (startPos <= -marqueeContainerLeft.scrollWidth / 2) {
+        startPos = 0;
+      }
+      marqueeContainerLeft.style.transform = `translateX(${startPos}px)`;
+      requestAnimationFrame(animate);
+    };
+
+    requestAnimationFrame(animate);
+  }, []);
+
   return (
     <div className="text-white bg-black flex flex-col items-center">
       <Header className="fixed top-0 left-0 w-full bg-black" />
