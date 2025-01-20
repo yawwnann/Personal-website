@@ -1,8 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./home";
-import AboutSection from "./about_section";
-import Skills from "./MySkills";
-
+import Home from "./compenents/home";
+import AboutSection from "./compenents/about_section";
+import Skills from "./compenents/MySkills";
 function App() {
   return (
     <Router>
@@ -10,7 +9,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/About" element={<AboutSection />} />
-          <Route path="/MySkills" element={<Skills />} />
+          <Route path="/Skills" element={<Skills />} />
         </Routes>
       </div>
     </Router>

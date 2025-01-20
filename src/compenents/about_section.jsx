@@ -5,10 +5,19 @@ import {
   useMotionValue,
   useSpring,
 } from "framer-motion";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const AboutSection = () => {
   const text = `I am a creative, persistent, and adaptive individual, with the ability to think innovatively and be solution-oriented. Experienced in the Technology Field, I am always open to new learning and committed to producing quality work. With a combination of good problem-solving and communication skills, I am able to work collaboratively and independently, and complete each project effectively and efficiently.`;
   const words = text.split(" ");
+
+  useEffect(() => {
+    AOS.init({
+      duration: 1200,
+      once: false,
+    });
+  }, []);
 
   useEffect(() => {
     // Mengatur animasi marquee kanan
@@ -109,9 +118,7 @@ const AboutSection = () => {
         {/* Tilt Card */}
         <motion.div
           className="w-[300px] h-[520px] mt-6 pt-4 rounded-lg mr-7 flex-shrink-0"
-          initial={{ opacity: 0, x: -100 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1.2, ease: "easeOut" }}
+          data-aos="zoom-in"
         >
           <TiltCard />
         </motion.div>
@@ -119,13 +126,12 @@ const AboutSection = () => {
         {/* Content Section */}
         <motion.div
           className="text-center ml-5 lg:text-left lg:max-w-lg"
-          initial={{ opacity: 0, x: 100 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1.2, ease: "easeOut" }}
+          data-aos="fade-up"
         >
           <h2 className="text-4xl font-bold text-white mb-4">
             About <span className="text-orange-500">Me</span>
           </h2>
+          {/* Elemen <p> tanpa AOS */}
           <motion.p
             className="text-lg text-white mb-6 leading-relaxed"
             variants={containerVariants}
@@ -141,8 +147,9 @@ const AboutSection = () => {
             ))}
           </motion.p>
           <button
-            className="rounded-md border-2 border-slate-300 py-2 px-4 text-centertext-sm transition-all shadow-sm hover:shadow-lg text-slate-600 hover:text-white hover:bg-orange-500 hover:border-slate-800 "
+            className="rounded-md border-2 border-slate-300 py-2 px-4 text-center text-sm transition-all shadow-sm hover:shadow-lg text-slate-600 hover:text-white hover:bg-orange-500 hover:border-slate-800"
             type="button"
+            data-aos="fade-up"
           >
             <span className="text-orange-500 font-bold hover:text-white">
               Download CV
@@ -199,7 +206,7 @@ const TiltCard = () => {
         transformStyle: "preserve-3d",
         transform,
       }}
-      className="relative h-96 w-72 rounded-xl bg-gradient-to-br from-orange-300 to-orange-500"
+      className="relative h-96 w-72 rounded-xl bg-gradient-to-br from-orange-600 to-orange-500"
     >
       <div
         style={{

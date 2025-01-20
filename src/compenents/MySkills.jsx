@@ -14,7 +14,7 @@ import {
   FaLaravel,
 } from "react-icons/fa";
 import { useAnimate } from "framer-motion";
-import { useEffect } from "react";
+import IconApp from "./icon";
 
 const NO_CLIP = "polygon(0 0, 100% 0, 100% 100%, 0% 100%)";
 const BOTTOM_RIGHT_CLIP = "polygon(0 0, 100% 0, 0 0, 0% 100%)";
@@ -40,18 +40,47 @@ const MySkills = () => {
   return (
     <div className="bg-neutral-900 px-4 py-12">
       <div className="mx-auto max-w-7xl text-center mb-8">
-        <h1 className="text-5xl font-semibold text-white font-poppins">
+        <h1
+          className="text-5xl font-semibold text-white font-poppins"
+          data-aos="fade-down"
+        >
           <span className="text-orange-500">My </span>
           <span>Skills</span>
         </h1>
-        <p className="text-lg text-gray-300 mt-2 font-poppins">
+        <p
+          className="text-lg text-gray-300 mt-2 font-poppins"
+          data-aos="fade-up"
+          data-aos-anchor-placement="top-bottom"
+        >
           The skills, tools and technologies I am really good at:
         </p>
       </div>
-      <div className="mx-auto max-w-7xl">
+      <div className="flex align-center justify-center gap-4 mb-4">
+        <img
+          src="https://github-readme-stats.vercel.app/api/top-langs?username=yawwnann&locale=en&hide_title=false&layout=compact&card_width=320&langs_count=5&theme=dracula&hide_border=false"
+          style={{ height: "200px", width: "auto" }}
+          alt="languages graph"
+          data-aos="fade-right"
+        />
+        <img
+          src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExN3RyYml5bDNtNWI2YW1iNHBoYThwaWQ0Ymw3Z2xxaDEydnJoMWk1ZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xdgisqRDFyO9G/giphy.gif"
+          style={{ height: "200px", width: "400px" }}
+          alt="gif"
+          className="rounded-md border-2"
+          data-aos="fade-left"
+        />
+      </div>
+      <div className="mx-auto max-w-7xl" data-aos="zoom-in">
         <ClipPathLinks />
       </div>
-      <Marquee />
+      <div className="mt-8 text-center font-poppins text-4xl  ">
+        <h2 className="font-bold" data-aos="fade-up">
+          <span className="text-orange-500 ">Development & Productivity</span>
+          <br />
+          <span>Tools I Use</span>
+        </h2>
+        <IconApp />
+      </div>
     </div>
   );
 };
@@ -172,61 +201,6 @@ LinkBox.propTypes = {
   Icon: PropTypes.elementType.isRequired,
   name: PropTypes.string.isRequired,
   href: PropTypes.string.isRequired,
-};
-
-const Marquee = () => {
-  useEffect(() => {
-    const marqueeContainer = document.querySelector(
-      ".marquee-container-skills"
-    );
-    const content = marqueeContainer.innerHTML;
-    marqueeContainer.innerHTML += content; // Duplicate content for seamless animation
-
-    let startPos = 0;
-    const speed = 1;
-
-    const animate = () => {
-      startPos -= speed;
-      if (startPos <= -marqueeContainer.scrollWidth / 2) {
-        startPos = 0;
-      }
-      marqueeContainer.style.transform = `translateX(${startPos}px)`;
-      requestAnimationFrame(animate);
-    };
-
-    animate();
-  }, []);
-
-  const technologies = [
-    { icon: FaReact, name: "React" },
-    { icon: FaNodeJs, name: "Node.js" },
-    { icon: FaPython, name: "Python" },
-    { icon: FaGitAlt, name: "Git" },
-    { icon: FaBootstrap, name: "Bootstrap" },
-    { icon: FaPhp, name: "PHP" },
-    { icon: FaFigma, name: "Figma" },
-    { icon: FaCss3Alt, name: "CSS" },
-    { icon: FaLaravel, name: "Laravel" },
-    { icon: FaDatabase, name: "Mysql" },
-    { icon: FaJs, name: "JavaScript" },
-    { icon: FaCss3, name: "Tailwind" },
-  ];
-
-  return (
-    <div className="overflow-hidden border-2 bg-neutral-900 py-4  mt-8">
-      <div className="marquee-container-skills flex gap-8  px-4 whitespace-nowrap">
-        {technologies.map((tech, index) => (
-          <div
-            key={index}
-            className="flex items-center text-white space-x-2 font-poppins text-lg"
-          >
-            <tech.icon className="text-2xl sm:text-3xl lg:text-4xl" />
-            <span>{tech.name}</span>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
 };
 
 export default MySkills;
