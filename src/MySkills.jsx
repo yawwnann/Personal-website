@@ -14,6 +14,27 @@ import {
   FaLaravel,
 } from "react-icons/fa";
 import { useAnimate } from "framer-motion";
+import { useEffect } from "react";
+
+const NO_CLIP = "polygon(0 0, 100% 0, 100% 100%, 0% 100%)";
+const BOTTOM_RIGHT_CLIP = "polygon(0 0, 100% 0, 0 0, 0% 100%)";
+const TOP_RIGHT_CLIP = "polygon(0 0, 0 100%, 100% 100%, 0% 100%)";
+const BOTTOM_LEFT_CLIP = "polygon(100% 100%, 100% 0, 100% 100%, 0 100%)";
+const TOP_LEFT_CLIP = "polygon(0 0, 100% 0, 100% 100%, 100% 0)";
+
+const ENTRANCE_KEYFRAMES = {
+  left: [BOTTOM_RIGHT_CLIP, NO_CLIP],
+  bottom: [BOTTOM_RIGHT_CLIP, NO_CLIP],
+  top: [BOTTOM_RIGHT_CLIP, NO_CLIP],
+  right: [TOP_LEFT_CLIP, NO_CLIP],
+};
+
+const EXIT_KEYFRAMES = {
+  left: [NO_CLIP, TOP_RIGHT_CLIP],
+  bottom: [NO_CLIP, TOP_RIGHT_CLIP],
+  top: [NO_CLIP, TOP_RIGHT_CLIP],
+  right: [NO_CLIP, BOTTOM_LEFT_CLIP],
+};
 
 const MySkills = () => {
   return (
@@ -30,6 +51,7 @@ const MySkills = () => {
       <div className="mx-auto max-w-7xl">
         <ClipPathLinks />
       </div>
+      <Marquee />
     </div>
   );
 };
@@ -59,26 +81,6 @@ const ClipPathLinks = () => {
       </div>
     </div>
   );
-};
-
-const NO_CLIP = "polygon(0 0, 100% 0, 100% 100%, 0% 100%)";
-const BOTTOM_RIGHT_CLIP = "polygon(0 0, 100% 0, 0 0, 0% 100%)";
-const TOP_RIGHT_CLIP = "polygon(0 0, 0 100%, 100% 100%, 0% 100%)";
-const BOTTOM_LEFT_CLIP = "polygon(100% 100%, 100% 0, 100% 100%, 0 100%)";
-const TOP_LEFT_CLIP = "polygon(0 0, 100% 0, 100% 100%, 100% 0)";
-
-const ENTRANCE_KEYFRAMES = {
-  left: [BOTTOM_RIGHT_CLIP, NO_CLIP],
-  bottom: [BOTTOM_RIGHT_CLIP, NO_CLIP],
-  top: [BOTTOM_RIGHT_CLIP, NO_CLIP],
-  right: [TOP_LEFT_CLIP, NO_CLIP],
-};
-
-const EXIT_KEYFRAMES = {
-  left: [NO_CLIP, TOP_RIGHT_CLIP],
-  bottom: [NO_CLIP, TOP_RIGHT_CLIP],
-  top: [NO_CLIP, TOP_RIGHT_CLIP],
-  right: [NO_CLIP, BOTTOM_LEFT_CLIP],
 };
 
 const LinkBox = ({ Icon, name, href }) => {
@@ -153,11 +155,11 @@ const LinkBox = ({ Icon, name, href }) => {
         style={{
           clipPath: BOTTOM_RIGHT_CLIP,
         }}
-        className="absolute inset-0 grid place-content-center bg-orange-500 text-white font-poppins"
+        className="absolute inset-0 grid place-content-center bg-orange-500 text-black font-poppins"
       >
-        <div className="flex items-center space-x-5">
-          <Icon className="text-xl sm:text-3xl md:text-4xl scale-125" />
-          <span className="text-sm sm:text-lg md:text-xl font-medium scale-125">
+        <div className="flex items-center space-x-2">
+          <Icon className="text-xl sm:text-3xl md:text-4xl " />
+          <span className="text-sm sm:text-lg md:text-xl font-bold ">
             {name}
           </span>
         </div>
@@ -166,11 +168,65 @@ const LinkBox = ({ Icon, name, href }) => {
   );
 };
 
-// Tambahkan validasi prop-types
 LinkBox.propTypes = {
   Icon: PropTypes.elementType.isRequired,
   name: PropTypes.string.isRequired,
   href: PropTypes.string.isRequired,
+};
+
+const Marquee = () => {
+  useEffect(() => {
+    const marqueeContainer = document.querySelector(
+      ".marquee-container-skills"
+    );
+    const content = marqueeContainer.innerHTML;
+    marqueeContainer.innerHTML += content; // Duplicate content for seamless animation
+
+    let startPos = 0;
+    const speed = 1;
+
+    const animate = () => {
+      startPos -= speed;
+      if (startPos <= -marqueeContainer.scrollWidth / 2) {
+        startPos = 0;
+      }
+      marqueeContainer.style.transform = `translateX(${startPos}px)`;
+      requestAnimationFrame(animate);
+    };
+
+    animate();
+  }, []);
+
+  const technologies = [
+    { icon: FaReact, name: "React" },
+    { icon: FaNodeJs, name: "Node.js" },
+    { icon: FaPython, name: "Python" },
+    { icon: FaGitAlt, name: "Git" },
+    { icon: FaBootstrap, name: "Bootstrap" },
+    { icon: FaPhp, name: "PHP" },
+    { icon: FaFigma, name: "Figma" },
+    { icon: FaCss3Alt, name: "CSS" },
+    { icon: FaLaravel, name: "Laravel" },
+    { icon: FaDatabase, name: "Mysql" },
+    { icon: FaJs, name: "JavaScript" },
+    { icon: FaCss3, name: "Tailwind" },
+  ];
+
+  return (
+    <div className="overflow-hidden border-2 bg-neutral-900 py-4  mt-8">
+      <div className="marquee-container-skills flex gap-8  px-4 whitespace-nowrap">
+        {technologies.map((tech, index) => (
+          <div
+            key={index}
+            className="flex items-center text-white space-x-2 font-poppins text-lg"
+          >
+            <tech.icon className="text-2xl sm:text-3xl lg:text-4xl" />
+            <span>{tech.name}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default MySkills;

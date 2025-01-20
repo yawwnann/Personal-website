@@ -1,29 +1,14 @@
-import { useEffect, useState, useRef } from "react";
-import { motion } from "framer-motion";
-import { useMotionTemplate, useMotionValue, useSpring } from "framer-motion";
+import { useEffect, useRef } from "react";
+import {
+  motion,
+  useMotionTemplate,
+  useMotionValue,
+  useSpring,
+} from "framer-motion";
 
-// Komponen AboutSection
 const AboutSection = () => {
-  const [scrollPosition, setScrollPosition] = useState(0);
-  const maxScrollHeight = 1000;
   const text = `I am a creative, persistent, and adaptive individual, with the ability to think innovatively and be solution-oriented. Experienced in the Technology Field, I am always open to new learning and committed to producing quality work. With a combination of good problem-solving and communication skills, I am able to work collaboratively and independently, and complete each project effectively and efficiently.`;
   const words = text.split(" ");
-
-  useEffect(() => {
-    // Menghitung posisi scroll
-    const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      const documentHeight =
-        document.documentElement.scrollHeight - window.innerHeight;
-      const scrollPercentage = Math.min(scrollTop / documentHeight, 1);
-      setScrollPosition(scrollPercentage * maxScrollHeight);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
 
   useEffect(() => {
     // Mengatur animasi marquee kanan
@@ -75,8 +60,33 @@ const AboutSection = () => {
     requestAnimationFrame(animate);
   }, []);
 
+  const containerVariants = {
+    hidden: { opacity: 0.5, scale: 0.9, y: 50 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      y: 0,
+      transition: {
+        duration: 1,
+        ease: "easeInOut",
+        when: "beforeChildren",
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const wordVariants = {
+    hidden: { opacity: 0, y: 10 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  };
+
   return (
-    <section className="relative bg-black text-black w-full py-16 px-6 flex flex-col items-center justify-center">
+    <motion.section
+      className="relative bg-black text-black w-full py-16 px-6 flex flex-col items-center justify-center"
+      initial="hidden"
+      animate="visible"
+      variants={containerVariants}
+    >
       {/* Background Marquee Text */}
       <div className="absolute inset-0 w-full h-full overflow-hidden">
         <div className="marquee-container-about-right whitespace-nowrap text-[9rem] font-extrabold tracking-wide text-gray-200 opacity-10">
@@ -90,60 +100,57 @@ const AboutSection = () => {
         </div>
       </div>
 
-      <div className="max-w-5xl flex flex-col lg:flex-row items-center gap-10">
+      <motion.div
+        className="max-w-5xl flex flex-col lg:flex-row items-center gap-10"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.2, ease: "easeOut" }}
+      >
         {/* Tilt Card */}
         <motion.div
-          style={{
-            transform: `translateX(${
-              -100 + (scrollPosition / maxScrollHeight) * 100
-            }px)`,
-          }}
           className="w-[300px] h-[520px] mt-6 pt-4 rounded-lg mr-7 flex-shrink-0"
+          initial={{ opacity: 0, x: -100 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
         >
           <TiltCard />
         </motion.div>
 
         {/* Content Section */}
         <motion.div
-          style={{
-            transform: `translateX(${
-              100 - (scrollPosition / maxScrollHeight) * 100
-            }px)`,
-          }}
           className="text-center ml-5 lg:text-left lg:max-w-lg"
+          initial={{ opacity: 0, x: 100 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
         >
           <h2 className="text-4xl font-bold text-white mb-4">
             About <span className="text-orange-500">Me</span>
           </h2>
-          <p className="text-lg text-white mb-6 leading-relaxed">
-            {words.map((word, index) => {
-              const opacity =
-                scrollPosition >= (index / words.length) * maxScrollHeight
-                  ? 1
-                  : 0;
-              return (
-                <motion.span
-                  key={index}
-                  style={{ opacity }}
-                  className="inline-block transition-opacity duration-300"
-                >
-                  {word}&nbsp;
-                </motion.span>
-              );
-            })}
-          </p>
+          <motion.p
+            className="text-lg text-white mb-6 leading-relaxed"
+            variants={containerVariants}
+          >
+            {words.map((word, index) => (
+              <motion.span
+                key={index}
+                className="inline-block"
+                variants={wordVariants}
+              >
+                {word}&nbsp;
+              </motion.span>
+            ))}
+          </motion.p>
           <button
             className="rounded-md border-2 border-slate-300 py-2 px-4 text-centertext-sm transition-all shadow-sm hover:shadow-lg text-slate-600 hover:text-white hover:bg-orange-500 hover:border-slate-800 "
             type="button"
           >
             <span className="text-orange-500 font-bold hover:text-white">
-              {" "}
-              Donwload CV
+              Download CV
             </span>
           </button>
         </motion.div>
-      </div>
-    </section>
+      </motion.div>
+    </motion.section>
   );
 };
 
