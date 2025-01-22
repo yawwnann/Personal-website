@@ -87,6 +87,7 @@ const AboutSection = () => {
 
     requestAnimationFrame(animate);
   }, []);
+
   return (
     <motion.section
       className="relative bg-black text-black w-full py-16 px-6 flex flex-col items-center justify-center"
@@ -144,14 +145,8 @@ const AboutSection = () => {
               </motion.span>
             ))}
           </motion.p>
-          <button
-            className="rounded-md border-2 border-slate-300 py-2 px-4 text-center text-sm transition-all shadow-sm hover:shadow-lg text-slate-600 hover:text-white hover:bg-orange-500 hover:border-slate-800"
-            type="button"
-            data-aos="fade-up"
-          >
-            <span className="text-orange-500 font-bold hover:text-white">
-              Download CV
-            </span>
+          <button className="rounded-2xl border-2 border-dashed border-black bg-orange-500 px-6 py-3 font-semibold uppercase text-black transition-all duration-300 hover:translate-x-[-4px] hover:translate-y-[-4px] hover:rounded-md hover:shadow-[4px_4px_0px_white] active:translate-x-[0px] active:translate-y-[0px] active:rounded-2xl active:shadow-none">
+            Download CV
           </button>
         </motion.div>
       </motion.div>
@@ -214,7 +209,7 @@ const TiltCard = () => {
         className="absolute inset-4 grid place-content-center rounded-xl bg-white shadow-xl overflow-hidden"
       >
         <img
-          src="/nanta2.png"
+          src="./img/nanta2.png"
           alt="Nanta"
           className="h-full w-full object-cover"
         />

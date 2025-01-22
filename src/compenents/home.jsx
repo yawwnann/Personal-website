@@ -1,17 +1,18 @@
 import { useState, useEffect } from "react";
-import Header from "./header";
-import HeroSection from "./HeroSection";
-import BackgroundImages from "./BackgroundImages";
-import RunningText from "./RunningText";
+import Header from "./home/Header";
+import HeroSection from "./home/HeroSection";
+import BackgroundImages from "./home/BackgroundImages";
+import RunningText from "./home/RunningText";
 import AboutSection from "./about_section";
 import MySkills from "./MySkills";
+import Project from "./Project";
 
 import AOS from "aos";
 import "aos/dist/aos.css";
 
 const roles = ["Graphic Designer", "Web Developer", "UI/UX Designer"];
 const runningText =
-  "✦   Developer   ✦   Graphic Designer   ✦   Video Editing   ✦   UI/UX Design   ✦   Front End Developer   ✦  Web Developer";
+  "✦   Full Stack Developer   ✦   Graphic Designer   ✦   Video Editing   ✦   UI/UX Design   ✦   Front End Developer   ✦  Back End Developer";
 
 export const Home = () => {
   const [roleIndex, setRoleIndex] = useState(0);
@@ -81,11 +82,14 @@ export const Home = () => {
       <HeroSection displayedText={displayedText} />
       <BackgroundImages />
       <RunningText runningText={runningText} />
-      <div id="about" className="w-full">
+      <div id="about" className="w-full ">
         <AboutSection />
       </div>
       <div id="skills" className="w-full">
         <MySkills />
+      </div>
+      <div id="Project" className="w-full">
+        <Project />
       </div>
     </div>
   );

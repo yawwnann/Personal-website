@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { scroller } from "react-scroll";
 
 const Header = () => {
@@ -6,45 +6,43 @@ const Header = () => {
 
   const buttonWidth = 100; // Menentukan lebar tombol
   const gap = 15; // Jarak antar tombol
-  const [backgroundPosition, setBackgroundPosition] = useState(0);
 
-  // Memperbarui posisi latar belakang ketika active berubah
-  useEffect(() => {
-    const navOrder = [
-      "home",
-      "about",
-      "skills",
-      "resume",
-      "project",
-      "contact",
-    ];
-    const activeIndex = navOrder.findIndex((item) => item === active);
-    setBackgroundPosition(activeIndex * (buttonWidth + gap));
-  }, [active]);
+  const navHome = "home";
+  const navAbout = "about";
+  const navSkills = "skills";
+  const navProject = "Project";
+  const navContact = "contact";
 
-  // Mengupdate state aktif berdasarkan scroll
+  const navOrder = [navHome, navAbout, navSkills, navProject, navContact];
+
+  const backgroundRef = useRef(null);
+
+  const calculateBackgroundPosition = (item) => {
+    const activeIndex = navOrder.findIndex((navItem) => navItem === item);
+    return activeIndex * (buttonWidth + gap);
+  };
+
+  // Mengupdate posisi latar belakang secara langsung
+  const updateBackgroundPosition = (item) => {
+    const newPosition = calculateBackgroundPosition(item);
+    if (backgroundRef.current) {
+      backgroundRef.current.style.transform = `translateX(${newPosition}px)`;
+    }
+  };
+
   useEffect(() => {
     const handleScroll = () => {
-      const sections = [
-        { id: "home", offset: document.getElementById("home")?.offsetTop },
-        { id: "about", offset: document.getElementById("about")?.offsetTop },
-        { id: "skills", offset: document.getElementById("skills")?.offsetTop },
-        { id: "resume", offset: document.getElementById("resume")?.offsetTop },
-        {
-          id: "project",
-          offset: document.getElementById("project")?.offsetTop,
-        },
-        {
-          id: "contact",
-          offset: document.getElementById("contact")?.offsetTop,
-        },
-      ];
+      const sections = navOrder.map((id) => ({
+        id,
+        offset: document.getElementById(id)?.offsetTop,
+      }));
 
       const scrollPosition = window.scrollY + window.innerHeight / 2;
 
       for (let i = sections.length - 1; i >= 0; i--) {
         if (scrollPosition >= sections[i].offset) {
           setActive(sections[i].id);
+          updateBackgroundPosition(sections[i].id);
           break;
         }
       }
@@ -59,6 +57,7 @@ const Header = () => {
 
   const handleItemClick = (item) => {
     setActive(item);
+    updateBackgroundPosition(item); // Memperbarui posisi latar belakang
     scroller.scrollTo(item, {
       smooth: true,
       duration: 500,
@@ -70,19 +69,19 @@ const Header = () => {
       <ul className="relative flex justify-center space-x-8">
         {/* Background oranye animasi untuk tombol aktif */}
         <div
+          ref={backgroundRef}
           className="absolute top-0 left-4 h-10 bg-orange-500 rounded-full transition-all duration-300 ease-in-out"
           style={{
-            width: `${buttonWidth}px`, // Menyesuaikan lebar latar belakang dengan tombol
-            transform: `translateX(${backgroundPosition}px)`, // Memindahkan latar belakang sesuai dengan tombol aktif
+            width: `${buttonWidth}px`,
           }}
         ></div>
 
         {/* Tombol Header */}
         <li className="relative z-10">
           <button
-            onClick={() => handleItemClick("home")}
+            onClick={() => handleItemClick(navHome)}
             className={`text-white px-4 py-2 transition-transform transform hover:scale-105 focus:outline-none ${
-              active === "home" ? "font-semibold" : ""
+              active === navHome ? "font-semibold" : ""
             }`}
           >
             Home
@@ -90,9 +89,9 @@ const Header = () => {
         </li>
         <li className="relative z-10">
           <button
-            onClick={() => handleItemClick("about")}
+            onClick={() => handleItemClick(navAbout)}
             className={`text-white px-4 py-2 ml-2 transition-transform transform hover:scale-105 focus:outline-none ${
-              active === "about" ? "font-semibold" : ""
+              active === navAbout ? "font-semibold" : ""
             }`}
           >
             About
@@ -100,9 +99,9 @@ const Header = () => {
         </li>
         <li className="relative z-10">
           <button
-            onClick={() => handleItemClick("skills")}
+            onClick={() => handleItemClick(navSkills)}
             className={`text-white px-4 py-2 ml-2 transition-transform transform hover:scale-105 focus:outline-none ${
-              active === "skills" ? "font-semibold" : ""
+              active === navSkills ? "font-semibold" : ""
             }`}
           >
             Skills
@@ -110,19 +109,9 @@ const Header = () => {
         </li>
         <li className="relative z-10">
           <button
-            onClick={() => handleItemClick("resume")}
+            onClick={() => handleItemClick(navProject)}
             className={`text-white px-4 py-2 ml-2 transition-transform transform hover:scale-105 focus:outline-none ${
-              active === "resume" ? "font-semibold" : ""
-            }`}
-          >
-            Resume
-          </button>
-        </li>
-        <li className="relative z-10">
-          <button
-            onClick={() => handleItemClick("project")}
-            className={`text-white px-4 py-2 transition-transform transform hover:scale-105 focus:outline-none ${
-              active === "project" ? "font-semibold" : ""
+              active === navProject ? "font-semibold" : ""
             }`}
           >
             Project
@@ -130,9 +119,9 @@ const Header = () => {
         </li>
         <li className="relative z-10">
           <button
-            onClick={() => handleItemClick("contact")}
-            className={`text-white px-4 py-2 transition-transform transform hover:scale-105 focus:outline-none ${
-              active === "contact" ? "font-semibold" : ""
+            onClick={() => handleItemClick(navContact)}
+            className={`text-white px-4 py-2  transition-transform transform hover:scale-105 focus:outline-none ${
+              active === navContact ? "font-semibold" : ""
             }`}
           >
             Contact

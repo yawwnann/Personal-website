@@ -1,7 +1,5 @@
 export default {
-  content: [
-    "./src/**/*.{html,js,jsx,ts,tsx}", // Pastikan path ini sesuai dengan struktur proyek Anda
-  ],
+  content: ["./index.html", "./src/**/*.{ts,tsx,js,jsx}"],
   theme: {
     extend: {
       fontFamily: {

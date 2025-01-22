@@ -12,7 +12,7 @@ const HeroSection = ({ displayedText }) => {
     const handleScroll = () => {
       if (containerRef.current) {
         const rect = containerRef.current.getBoundingClientRect();
-        y.set(window.scrollY - rect.top); // Update scroll value
+        y.set(window.scrollY - rect.top);
       }
     };
 
@@ -28,9 +28,9 @@ const HeroSection = ({ displayedText }) => {
     >
       <motion.div className="text-center max-w-3xl" style={{ y: yTransform }}>
         {/* Hello Gaes */}
-        <motion.span className="text-xl font-[Poppins] bg-transparency border-2 py-2 px-4 rounded-full transition-transform transform hover:scale-110 duration-500 ease-in-out">
-          Hello Gaes
-        </motion.span>
+        <div>
+          <SpotlightButton />
+        </div>
 
         {/* Title */}
         <motion.h1 className="text-6xl mt-4 font-extrabold mb-4 font-[Poppins]">
@@ -55,7 +55,7 @@ const HeroSection = ({ displayedText }) => {
         {/* Icons */}
         <motion.div className="space-x-4 flex justify-center">
           <a
-            href="https://github.com"
+            href="https://github.com/yawwnann"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -81,7 +81,52 @@ const HeroSection = ({ displayedText }) => {
   );
 };
 
-// Validasi properti menggunakan PropTypes
+const SpotlightButton = () => {
+  const btnRef = useRef(null);
+  const spanRef = useRef(null);
+
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      const { width } = e.target.getBoundingClientRect();
+      const offset = e.offsetX;
+      const left = `${(offset / width) * 100}%`;
+
+      spanRef.current.animate({ left }, { duration: 250, fill: "forwards" });
+    };
+
+    const handleMouseLeave = () => {
+      spanRef.current.animate(
+        { left: "50%" },
+        { duration: 100, fill: "forwards" }
+      );
+    };
+
+    btnRef.current.addEventListener("mousemove", handleMouseMove);
+    btnRef.current.addEventListener("mouseleave", handleMouseLeave);
+
+    return () => {
+      btnRef.current.removeEventListener("mousemove", handleMouseMove);
+      btnRef.current.removeEventListener("mouseleave", handleMouseLeave);
+    };
+  }, []);
+
+  return (
+    <motion.button
+      whileTap={{ scale: 0.985 }}
+      ref={btnRef}
+      className="relative w-full max-w-xs overflow-hidden rounded-lg bg-transparency border-2 px-4 py-3 text-lg font-medium "
+    >
+      <span className="pointer-events-none text-white relative z-10">
+        Hello Gaes
+      </span>
+      <span
+        ref={spanRef}
+        className="pointer-events-none absolute left-[50%] top-[50%] h-32 w-32 -translate-x-[50%] -translate-y-[50%] rounded-full bg-orange-500"
+      />
+    </motion.button>
+  );
+};
+
 HeroSection.propTypes = {
   displayedText: PropTypes.string.isRequired,
 };

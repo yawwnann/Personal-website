@@ -58,15 +58,14 @@ const MySkills = () => {
       <div className="flex align-center justify-center gap-4 mb-4">
         <img
           src="https://github-readme-stats.vercel.app/api/top-langs?username=yawwnann&locale=en&hide_title=false&layout=compact&card_width=320&langs_count=5&theme=dracula&hide_border=false"
-          style={{ height: "200px", width: "auto" }}
+          className="h-[200px] w-auto transition-transform duration-300 ease-in-out transform hover:scale-110 active:scale-115"
           alt="languages graph"
           data-aos="fade-right"
         />
         <img
           src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExN3RyYml5bDNtNWI2YW1iNHBoYThwaWQ0Ymw3Z2xxaDEydnJoMWk1ZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xdgisqRDFyO9G/giphy.gif"
-          style={{ height: "200px", width: "400px" }}
+          className="h-[200px] w-[400px] rounded-md border-2 transition-transform duration-300 ease-in-out transform hover:scale-110 active:scale-115"
           alt="gif"
-          className="rounded-md border-2"
           data-aos="fade-left"
         />
       </div>
