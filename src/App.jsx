@@ -1,9 +1,10 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./compenents/home";
-import AboutSection from "./compenents/about_section";
-import Skills from "./compenents/MySkills";
-import ProjectPage from "./compenents/Project";
-import Landyard from "./compenents/Landyard/Lanyard";
+import AboutSection from "./compenents/About/about_section";
+import Skills from "./compenents/Skills/MySkills";
+import ProjectPage from "./compenents/Project/Project";
+import ContainerScroll from "./compenents/Scroll/container-scroll-demo";
+import Contact from "./compenents/Contact/Contact";
 
 function App() {
   return (
@@ -14,7 +15,8 @@ function App() {
           <Route path="/About" element={<AboutSection />} />
           <Route path="/Skills" element={<Skills />} />
           <Route path="/ProjectPage" element={<ProjectPage />} />
-          <Route path="/Landyard" element={<Landyard />} />
+          <Route path="/ContainerScroll" element={<ContainerScroll />} />
+          <Route path="/Contact" element={<Contact />} />
         </Routes>
       </div>
     </Router>

@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { scroller } from "react-scroll";
 
 const Header = () => {
@@ -10,7 +10,7 @@ const Header = () => {
   const navHome = "home";
   const navAbout = "about";
   const navSkills = "skills";
-  const navProject = "Project";
+  const navProject = "project";
   const navContact = "contact";
 
   const navOrder = [navHome, navAbout, navSkills, navProject, navContact];
@@ -23,18 +23,21 @@ const Header = () => {
   };
 
   // Mengupdate posisi latar belakang secara langsung
-  const updateBackgroundPosition = (item) => {
-    const newPosition = calculateBackgroundPosition(item);
-    if (backgroundRef.current) {
-      backgroundRef.current.style.transform = `translateX(${newPosition}px)`;
-    }
-  };
+  const updateBackgroundPosition = useCallback(
+    (item) => {
+      const newPosition = calculateBackgroundPosition(item);
+      if (backgroundRef.current) {
+        backgroundRef.current.style.transform = `translateX(${newPosition}px)`;
+      }
+    },
+    [navOrder]
+  );
 
   useEffect(() => {
     const handleScroll = () => {
       const sections = navOrder.map((id) => ({
         id,
-        offset: document.getElementById(id)?.offsetTop,
+        offset: document.getElementById(id)?.offsetTop || 0,
       }));
 
       const scrollPosition = window.scrollY + window.innerHeight / 2;
@@ -53,7 +56,7 @@ const Header = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [navOrder, updateBackgroundPosition]);
 
   const handleItemClick = (item) => {
     setActive(item);

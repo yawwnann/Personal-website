@@ -3,12 +3,12 @@ import Header from "./home/Header";
 import HeroSection from "./home/HeroSection";
 import BackgroundImages from "./home/BackgroundImages";
 import RunningText from "./home/RunningText";
-import AboutSection from "./about_section";
-import MySkills from "./MySkills";
-import Project from "./Project";
-
-import AOS from "aos";
-import "aos/dist/aos.css";
+import AboutSection from "./About/about_section";
+import MySkills from "./Skills/MySkills";
+import Project from "./Project/Project";
+import Contact from "./Contact/Contact";
+import Aos from "aos";
+import ContainerScroll from "./Scroll/container-scroll-demo";
 
 const roles = ["Graphic Designer", "Web Developer", "UI/UX Designer"];
 const runningText =
@@ -21,7 +21,7 @@ export const Home = () => {
   const [isTyping, setIsTyping] = useState(true);
 
   useEffect(() => {
-    AOS.init({ duration: 1000, once: false });
+    Aos.init({ duration: 1000, once: false });
   }, []);
 
   useEffect(() => {
@@ -55,41 +55,48 @@ export const Home = () => {
   }, [charIndex, isTyping, roleIndex]);
 
   useEffect(() => {
-    // Mengatur animasi marquee kiri
     const marqueeContainerLeft = document.querySelector(".marquee-container");
-    const content = marqueeContainerLeft.innerHTML;
-    marqueeContainerLeft.innerHTML += content;
+    if (marqueeContainerLeft) {
+      const content = marqueeContainerLeft.innerHTML;
+      marqueeContainerLeft.innerHTML += content;
 
-    let startPos = 0;
-    const speed = 1;
+      let startPos = 0;
+      const speed = 1;
 
-    const animate = () => {
-      startPos -= speed;
-      if (startPos <= -marqueeContainerLeft.scrollWidth / 2) {
-        startPos = 0;
-      }
-      marqueeContainerLeft.style.transform = `translateX(${startPos}px)`;
+      const animate = () => {
+        startPos -= speed;
+        if (startPos <= -marqueeContainerLeft.scrollWidth / 2) {
+          startPos = 0;
+        }
+        marqueeContainerLeft.style.transform = `translateX(${startPos}px)`;
+        requestAnimationFrame(animate);
+      };
+
       requestAnimationFrame(animate);
-    };
-
-    requestAnimationFrame(animate);
+    }
   }, []);
 
   return (
     <div className="text-white bg-black flex flex-col items-center">
-      <Header className="fixed top-0 left-0 w-full bg-black" />
-      <div className="absolute top-[70px] left-0 w-full h-full bg-gradient-balls"></div>
+      <Header className="fixed top-0 left-0 w-full bg-black z-50" />
+      <div className="absolute top-[70px] left-0 w-full h-full bg-gradient-balls z-0"></div>
       <HeroSection displayedText={displayedText} />
       <BackgroundImages />
       <RunningText runningText={runningText} />
-      <div id="about" className="w-full ">
+      <div id="about" className="w-full">
         <AboutSection />
       </div>
       <div id="skills" className="w-full">
         <MySkills />
       </div>
-      <div id="Project" className="w-full">
+      <div id="project" className="w-full py-16">
         <Project />
+      </div>
+      <div id="ContainerScroll" className="w-full py-16">
+        <ContainerScroll />
+      </div>
+      <div id="contact" className="w-full min-h-screen mt-16">
+        <Contact />
       </div>
     </div>
   );
