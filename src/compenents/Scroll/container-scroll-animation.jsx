@@ -38,7 +38,7 @@ export const ContainerScroll = ({ titleComponent, children }) => {
       <div
         className=" w-full relative"
         style={{
-          perspective: "1000px",
+          perspective: "700px",
         }}
       >
         {/* Header Component */}

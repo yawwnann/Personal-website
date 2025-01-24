@@ -4,43 +4,40 @@ import { FaGithub } from "react-icons/fa";
 const projects = [
   {
     title: "Website Pemesanan Kue",
-    description: "This is the first project",
+    description:
+      "website pemesanan kue menggunakan php Native,Tailwind css, dan API Midtrans Payments Gateway",
     image: "./img/Project1/dashboard_user.png",
-    link: "https://example.com/project1",
-    github: "https://github.com/yawwnann",
+    link: "https://github.com/yawwnann/Website-Pemesanan-Kue",
+    github: "https://github.com/yawwnann/Website-Pemesanan-Kue",
   },
   {
-    title: "Project 2",
-    description: "This is the second project",
-    image: "./img/Project1/dashboard_user.png",
-    link: "https://example.com/project2",
-    github: "https://github.com/example/project2",
+    title: "Website Profil Tim PKM-PM 2024",
+    description:
+      "Website ini bertujuan untuk mendukung program Pengabdian Masyarakat",
+    image: "./img/Project2/pkm.png",
+    link: "https://soothe-game.com",
+    github: "https://github.com/yawwnann/Website-Pkm-pm/tree/main",
   },
   {
-    title: "Project 3",
-    description: "This is the third project",
-    image: "./img/Project1/dashboard_user.png",
+    title: "Toko Sepatu",
+    description:
+      "Proyek ini adalah sebuah website E-Commerce yang dibuat untuk memudahkan pengguna dalam membeli sepatu secara online",
+    image: "./img/Project3/Nayshop.png",
+    link: "https://github.com/yawwnann/Nayhsop/tree/main",
+    github: "https://github.com/yawwnann/Nayhsop/tree/main",
+  },
+  {
+    title: "Personal Website",
+    description:
+      "Website ini merupakan sebuah website yang berisikan portofolio dari project yang telah saya kerjakan",
+    image: "./img/Project4/personal-web.png",
     link: "https://example.com/project3",
     github: "https://github.com/example/project3",
   },
   {
-    title: "Project 4",
+    title: "Website Perpustakaan",
     description: "This is the third project",
-    image: "./img/Project1/dashboard_user.png",
-    link: "https://example.com/project3",
-    github: "https://github.com/example/project3",
-  },
-  {
-    title: "Project 4",
-    description: "This is the third project",
-    image: "./img/Project1/dashboard_user.png",
-    link: "https://example.com/project3",
-    github: "https://github.com/example/project3",
-  },
-  {
-    title: "Project 4",
-    description: "This is the third project",
-    image: "./img/Project1/dashboard_user.png",
+    image: "./img/Project5/dashboard_perpus.png",
     link: "https://example.com/project3",
     github: "https://github.com/example/project3",
   },
@@ -56,8 +53,8 @@ const projects = [
 const ThreeDCardDemo = () => {
   return (
     <div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div className="col-span-full text-center">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1">
+        <div className="col-span-full text-center mb-4">
           <h1 className="text-4xl font-semibold text-orange-500 ">
             Unleash the power of <br />
             <span className="text-4xl md:text-[6rem] text-white font-bold mt-1 leading-none">
@@ -66,8 +63,8 @@ const ThreeDCardDemo = () => {
           </h1>
         </div>
         {projects.map((project, index) => (
-          <CardContainer key={index} className="inter-var">
-            <CardBody className="bg-gray-500 relative group/card dark:hover:shadow-xl dark:hover:shadow-orange-500/[0.4] dark:bg-black dark:border-white/[0.2] border-white  w-auto rounded-xl p-6 border-4">
+          <CardContainer key={index} className="inter-var mb-3">
+            <CardBody className="bg-gray-500 relative group/card dark:hover:shadow-xl dark:hover:shadow-orange-500/[0.4] dark:bg-black dark:border-white/[0.2] border-white h-auto w-auto rounded-xl p-4 border-4">
               <CardItem
                 translateZ="50"
                 className="text-xl font-bold text-neutral-600 dark:text-white"
@@ -88,7 +85,7 @@ const ThreeDCardDemo = () => {
                   className="h-48 w-full object-cover rounded-xl group-hover/card:shadow-xl"
                 />
               </CardItem>
-              <div className="flex justify-between items-center mt-12">
+              <div className="flex justify-between items-center mt-8">
                 <CardItem
                   translateZ={20}
                   as="a"
