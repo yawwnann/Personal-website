@@ -1,7 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+html {
+  scroll-behavior: smooth;
+}
 * {
   box-sizing: border-box;
 }
@@ -371,4 +373,22 @@ header {
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
   }
+}
+
+/* =========================================
+   Velocity Teks
+========================================= */
+.marquee-container-velocity {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+.marquee-track {
+  display: flex;
+  align-items: center;
+}
+#ui-parallax {
+  margin-top: 100px; /* Tambahkan ruang manual */
 }

@@ -1,25 +1,27 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./compenents/home";
-import AboutSection from "./compenents/About/about_section";
-import Skills from "./compenents/Skills/MySkills";
-import ProjectPage from "./compenents/Project/Project";
-import ContainerScroll from "./compenents/Scroll/container-scroll-demo";
-import Contact from "./compenents/Contact/Contact";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./components/home";
+import AboutSection from "./components/About/about_section";
+import Skills from "./components/Skills/MySkills";
+import ProjectPage from "./components/Project/Project";
+import ContainerScroll from "./components/Scroll/container-scroll-demo";
+import Contact from "./components/Contact/Contact";
+import HeroParallaxDemo from "./components/ui_design/Ui_parallax";
 
 function App() {
   return (
-    <Router>
+    <BrowserRouter>
       <div>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/About" element={<AboutSection />} />
-          <Route path="/Skills" element={<Skills />} />
-          <Route path="/ProjectPage" element={<ProjectPage />} />
-          <Route path="/ContainerScroll" element={<ContainerScroll />} />
-          <Route path="/Contact" element={<Contact />} />
+          <Route path="/about" element={<AboutSection />} />
+          <Route path="/skills" element={<Skills />} />
+          <Route path="/project" element={<ProjectPage />} />
+          <Route path="/scroll" element={<ContainerScroll />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/ui" element={<HeroParallaxDemo />} />
         </Routes>
       </div>
-    </Router>
+    </BrowserRouter>
   );
 }
 
