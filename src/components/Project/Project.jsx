@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { CardContainer, CardBody, CardItem } from "./3d-card";
@@ -9,7 +9,7 @@ const projects = [
   {
     title: "Website Pemesanan Kue",
     description:
-      "website pemesanan kue menggunakan php Native,Tailwind css, dan API Midtrans Payments Gateway",
+      "Website pemesanan kue menggunakan PHP Native, Tailwind CSS, dan API Midtrans Payments Gateway",
     image: "./img/Project1/dashboard_user.png",
     link: "https://github.com/yawwnann/Website-Pemesanan-Kue",
     github: "https://github.com/yawwnann/Website-Pemesanan-Kue",
@@ -40,24 +40,26 @@ const projects = [
   },
   {
     title: "Website Perpustakaan",
-    description: "This is the third project",
+    description:
+      "Website ini dibuat untuk mengelola perpustakaan secara online",
     image: "./img/Project5/dashboard_perpus.png",
     link: "https://example.com/project3",
     github: "https://github.com/example/project3",
   },
   {
     title: "Project 4",
-    description: "This is the third project",
+    description: "Proyek ini adalah percobaan untuk menampilkan data",
     image: "./img/Project1/dashboard_user.png",
     link: "https://example.com/project3",
     github: "https://github.com/example/project3",
   },
 ];
+
 const ThreeDCardDemo = () => {
   const [resetAnimation, setResetAnimation] = useState(0);
 
   useEffect(() => {
-    AOS.init({ duration: 1000 });
+    AOS.init({ duration: 1000 }); // Inisialisasi AOS
   }, []);
 
   // Reset animasi setiap kali halaman dikunjungi kembali
@@ -75,25 +77,21 @@ const ThreeDCardDemo = () => {
   return (
     <div key={resetAnimation}>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1">
-        <div className="col-span-full text-center mb-4" data-aos="fade-down">
-          <h1 className="text-4xl font-semibold text-orange-500 ">
+        {/* Header */}
+        <div className="col-span-full text-center mb-4" data-aos="fade-up">
+          <h1 className="text-4xl font-semibold text-orange-500">
             Unleash the power of <br />
             <span className="text-4xl md:text-[6rem] text-white font-bold mt-1 leading-none">
               My Project
             </span>
           </h1>
         </div>
+        {/* Project Cards */}
         {projects.map((project, index) => (
-          <motion.div
+          <div
             key={index}
-            whileHover={{
-              scale: 1.05,
-              boxShadow: "0px 8px 15px rgba(0, 0, 0, 0.3)",
-            }}
-            whileTap={{ scale: 0.95 }}
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.2 }}
+            data-aos="fade-up" // Animasi masuk seragam
+            data-aos-delay={index * 100} // Delay berbeda untuk setiap kartu
           >
             <CardContainer className="inter-var mb-3">
               <CardBody className="bg-gray-500 relative group/card dark:hover:shadow-xl dark:hover:shadow-orange-500/[0.4] dark:bg-black dark:border-white/[0.2] border-white  h-[390px] w-[400px] rounded-xl -mt-6 p-4 border-4">
@@ -106,7 +104,7 @@ const ThreeDCardDemo = () => {
                 <CardItem
                   as="p"
                   translateZ="60"
-                  className="text-neutral-500 text-sm max-w-sm  dark:text-neutral-300"
+                  className="text-neutral-500 text-sm max-w-sm dark:text-neutral-300"
                 >
                   {project.description}
                 </CardItem>
@@ -139,7 +137,7 @@ const ThreeDCardDemo = () => {
                 </div>
               </CardBody>
             </CardContainer>
-          </motion.div>
+          </div>
         ))}
       </div>
     </div>

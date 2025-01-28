@@ -20,19 +20,19 @@ const HeroSection = ({ displayedText }) => {
     tl.fromTo(
       containerRef.current,
       { opacity: 0, y: -50 },
-      { opacity: 1, y: 0, duration: 1, ease: "power2.out" }
+      { opacity: 1, y: 0, duration: 1.5, ease: "power4.out" }
     )
       .fromTo(
         textRef.current,
         { opacity: 0, y: 50 },
-        { opacity: 1, y: 0, duration: 1, ease: "power2.out" },
-        "<" // Start the animation together with the container
+        { opacity: 1, y: 0, duration: 1.5, ease: "power4.out" },
+        "<"
       )
       .fromTo(
         buttonRef.current,
         { scale: 0 },
-        { scale: 1, duration: 0.8, ease: "back.out(1.7)" },
-        "-=0.5" // Start before the previous animation ends
+        { scale: 1, duration: 1, ease: "back.out(1.7)" },
+        "-=1"
       );
   }, []);
 
@@ -40,19 +40,23 @@ const HeroSection = ({ displayedText }) => {
   useEffect(() => {
     gsap.to(textRef.current, {
       yPercent: -20, // Parallax movement upwards
-      ease: "none",
+      ease: "power1.out",
       scrollTrigger: {
         trigger: containerRef.current,
         start: "top center",
         end: "bottom top",
-        scrub: true, // Smooth parallax effect while scrolling
+        scrub: 0.5, // Smooth scrolling
       },
     });
   }, []);
 
   // Initialize AOS
   useEffect(() => {
-    AOS.init({ duration: 1000 });
+    AOS.init({
+      duration: 1200,
+      easing: "ease-in-out",
+      once: true,
+    });
   }, []);
 
   return (
@@ -65,18 +69,19 @@ const HeroSection = ({ displayedText }) => {
       <motion.div ref={textRef} className="text-center max-w-3xl">
         {/* Button */}
         <div data-aos="zoom-in">
-          {" "}
-          {/* AOS animation */}
           <SpotlightButton ref={buttonRef} />
         </div>
 
         {/* Title */}
         <motion.h1
           className="text-6xl mt-4 font-extrabold mb-4 font-[Poppins]"
-          data-aos="fade-right" // AOS animation
+          data-aos="fade-right"
         >
-          <span> I am </span>
-          <motion.span className="text-orange-500 transition-transform transform hover:scale-110 duration-500 ease-in-out">
+          <span>I am </span>
+          <motion.span
+            className="text-orange-500 transition-transform transform hover:scale-110 duration-500 ease-in-out"
+            whileHover={{ scale: 1.2 }}
+          >
             Nanta
           </motion.span>
           <br />
@@ -89,13 +94,14 @@ const HeroSection = ({ displayedText }) => {
         {/* Description */}
         <motion.p
           className="text-xl mb-6 font-[Press Start 2P]"
-          data-aos="fade-left" // AOS animation
+          data-aos="fade-left"
+          whileHover={{ scale: 1.05, y: -5 }}
         >
           I am a dedicated graphic designer and web developer, ready to help
           turn your creative ideas into reality. Lets build something amazing
           together.
         </motion.p>
-        <SocialMediaIcons />
+        <SocialMediaIcons data-aos="fade-up" />
       </motion.div>
     </div>
   );
@@ -113,13 +119,16 @@ const SpotlightButton = forwardRef((props, ref) => {
       const offset = e.offsetX;
       const left = `${(offset / width) * 100}%`;
 
-      spanRef.current.animate({ left }, { duration: 250, fill: "forwards" });
+      spanRef.current.animate(
+        { left },
+        { duration: 500, fill: "forwards", easing: "ease-out" }
+      );
     };
 
     const handleMouseLeave = () => {
       spanRef.current.animate(
         { left: "50%" },
-        { duration: 100, fill: "forwards" }
+        { duration: 300, fill: "forwards", easing: "ease-in" }
       );
     };
 
@@ -140,7 +149,7 @@ const SpotlightButton = forwardRef((props, ref) => {
     <motion.button
       whileTap={{ scale: 0.985 }}
       ref={ref}
-      className="relative w-full max-w-xs overflow-hidden rounded-lg bg-transparency  px-4 py-3 text-lg font-medium"
+      className="relative w-full max-w-xs overflow-hidden rounded-lg bg-transparency px-4 py-3 text-lg font-medium"
     >
       <span className="pointer-events-none text-white relative z-10">
         Hello

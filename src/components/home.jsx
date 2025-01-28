@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import Header from "./home/Header";
+import Header from "./Header/Header";
 import HeroSection from "./home/HeroSection";
 import BackgroundImages from "./home/BackgroundImages";
 import RunningText from "./home/RunningText";
@@ -8,9 +8,9 @@ import MySkills from "./Skills/MySkills";
 import Project from "./Project/Project";
 import Contact from "./Contact/Contact";
 import Aos from "aos";
-import ContainerScroll from "./Scroll/container-scroll-demo";
-import VelocityText from "./VelocityText/VelocityText";
-import HeroParallaxDemo from "./ui_design/Ui_parallax"; // Import HeroParallaxDemo
+import ContainerScroll from "./Project/Scroll/container-scroll-demo";
+import VelocityText from "./Project/VelocityText/VelocityText";
+import HeroParallaxDemo from "./Project/ui_design/Ui_parallax"; // Import HeroParallaxDemo
 
 const roles = ["Graphic Designer", "Web Developer", "UI/UX Designer"];
 const runningText =
@@ -97,10 +97,10 @@ export const Home = () => {
         <Project />
       </div>
       {/* Tambahkan HeroParallaxDemo dengan Margin */}
-      <div id="ui-parallax" className="w-full mt-16 py-16">
+      <div id="ui-parallax" className="w-full mt-16 py-16 z-100">
         <HeroParallaxDemo />
       </div>
-      <div id="ContainerScroll" className="w-full mt-80 py-16">
+      <div id="ContainerScroll" className="w-full mt-80 py-16-2">
         <ContainerScroll />
       </div>
       <div id="VelocityText" className="w-full py-16">

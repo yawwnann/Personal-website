@@ -13,7 +13,8 @@ export const HeroParallax = ({ products }) => {
     offset: ["start start", "end start"],
   });
 
-  const springConfig = { stiffness: 300, damping: 30, bounce: 100 };
+  // Optimized spring configuration for smoothness
+  const springConfig = { stiffness: 120, damping: 20, mass: 0.5 };
 
   const translateX = useSpring(
     useTransform(scrollYProgress, [0, 1], [0, 1000]),
@@ -123,7 +124,7 @@ export const ProductCard = ({ product, translate }) => {
       whileHover={{
         y: -20,
       }}
-      className="group/product h-96 w-[40rem] relative flex-shrink-0"
+      className="group/product h-80 w-[40rem] relative flex-shrink-0"
     >
       <a
         href={product.link}
@@ -151,7 +152,7 @@ ProductCard.propTypes = {
     link: PropTypes.string.isRequired,
     thumbnail: PropTypes.string.isRequired,
   }).isRequired,
-  translate: PropTypes.object.isRequired, // Assuming MotionValue is an object type
+  translate: PropTypes.object.isRequired,
 };
 
 export default HeroParallax;
