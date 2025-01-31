@@ -31,7 +31,7 @@ const MySkills = () => {
   return (
     <div className="px-4 py-12" data-aos="fade-up">
       <div className="mx-auto max-w-7xl text-center mb-8" data-aos="fade-up">
-        <h1 className="text-6xl font-extrabold text-white font-poppins">
+        <h1 className="text-6xl font-bold text-white font-poppins">
           <span className="text-orange-500 ">My </span>
           <span>Skills</span>
         </h1>

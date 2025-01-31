@@ -16,7 +16,7 @@ body,
 }
 
 body {
-  background-color: #111;
+  background-color: #252525;
   overflow-x: hidden;
 }
 canvas {
@@ -105,7 +105,7 @@ canvas {
 .bg-gradient-balls {
   background: radial-gradient(
     circle,
-    rgba(7, 0, 61, 0.925) 10%,
+    rgba(248, 248, 248, 0.199) 10%,
     rgba(0, 0, 0, 0.295) 40%
   );
   background-size: 200% 200%;
@@ -390,4 +390,21 @@ header {
 }
 #ui-parallax {
   margin-top: 100px; /* Tambahkan ruang manual */
+}
+
+/* =========================================
+  Location
+========================================= */
+/* Animasi untuk memutar globe */
+@keyframes spin-slow {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 5s linear infinite;
 }

@@ -5,7 +5,6 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import AOS from "aos"; // Import AOS
 import "aos/dist/aos.css"; // Import AOS styles
-import SocialMediaIcons from "./SocialMediaIcons";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -14,7 +13,6 @@ const HeroSection = ({ displayedText }) => {
   const textRef = useRef(null);
   const buttonRef = useRef(null);
 
-  // Initial animation when the page is loaded
   useEffect(() => {
     const tl = gsap.timeline();
     tl.fromTo(
@@ -36,21 +34,19 @@ const HeroSection = ({ displayedText }) => {
       );
   }, []);
 
-  // Parallax effect using GSAP and ScrollTrigger
   useEffect(() => {
     gsap.to(textRef.current, {
-      yPercent: -20, // Parallax movement upwards
+      yPercent: -20,
       ease: "power1.out",
       scrollTrigger: {
         trigger: containerRef.current,
         start: "top center",
         end: "bottom top",
-        scrub: 0.5, // Smooth scrolling
+        scrub: 0.5,
       },
     });
   }, []);
 
-  // Initialize AOS
   useEffect(() => {
     AOS.init({
       duration: 1200,
@@ -61,20 +57,18 @@ const HeroSection = ({ displayedText }) => {
 
   return (
     <div
-      className="relative min-h-screen flex flex-col z-10 items-center justify-center"
+      className="relative min-h-screen flex flex-col z-10 items-center justify-center px-4 sm:px-6 lg:px-8"
       id="home"
       ref={containerRef}
-      data-aos="fade-up" // AOS animation
+      data-aos="fade-up"
     >
       <motion.div ref={textRef} className="text-center max-w-3xl">
-        {/* Button */}
         <div data-aos="zoom-in">
           <SpotlightButton ref={buttonRef} />
         </div>
 
-        {/* Title */}
         <motion.h1
-          className="text-6xl mt-4 font-extrabold mb-4 font-[Poppins]"
+          className="text-4xl sm:text-5xl lg:text-6xl mt-4 font-extrabold mb-4 font-[Poppins]"
           data-aos="fade-right"
         >
           <span>I am </span>
@@ -85,15 +79,14 @@ const HeroSection = ({ displayedText }) => {
             Nanta
           </motion.span>
           <br />
-          <motion.span className="text-6xl transition-transform transform hover:scale-110 duration-500 mt-4 ease-in-out hover:cursor-default">
+          <motion.span className="text-4xl sm:text-5xl lg:text-6xl transition-transform transform hover:scale-110 duration-500 mt-4 ease-in-out hover:cursor-default">
             {displayedText}
           </motion.span>
           <span className="caret"></span>
         </motion.h1>
 
-        {/* Description */}
         <motion.p
-          className="text-xl mb-6 font-[Press Start 2P]"
+          className="text-base sm:text-lg lg:text-xl mb-6 font-[Press Start 2P]"
           data-aos="fade-left"
           whileHover={{ scale: 1.05, y: -5 }}
         >
@@ -101,13 +94,11 @@ const HeroSection = ({ displayedText }) => {
           turn your creative ideas into reality. Lets build something amazing
           together.
         </motion.p>
-        <SocialMediaIcons data-aos="fade-up" />
       </motion.div>
     </div>
   );
 };
 
-// SpotlightButton with forwardRef
 const SpotlightButton = forwardRef((props, ref) => {
   const spanRef = useRef(null);
 

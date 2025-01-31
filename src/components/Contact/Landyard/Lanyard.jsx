@@ -24,11 +24,31 @@ useGLTF.preload("/model/tag.glb");
 useTexture.preload("/img/Band.png");
 
 const Lanyard = () => {
+  const [isVisible, setIsVisible] = useState(true);
+
+  // Detect visibility changes
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        setIsVisible(false); // User left the page
+      } else {
+        setIsVisible(true); // User is back on the page
+      }
+    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
+    // Cleanup event listener
+    return () => {
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
+  }, []);
+
   return (
     <Canvas camera={{ position: [0, 0, 13], fov: 25 }}>
       <ambientLight intensity={Math.PI} />
       <Physics interpolate gravity={[0, -40, 0]} timeStep={1 / 60}>
-        <Band />
+        <Band isVisible={isVisible} />
       </Physics>
       <Environment background blur={0.75}>
         <color attach="background" args={["black"]} />
@@ -65,9 +85,17 @@ const Lanyard = () => {
   );
 };
 
-function Band({ maxSpeed = 50, minSpeed = 10 }) {
-  const band = useRef(), fixed = useRef(), j1 = useRef(), j2 = useRef(), j3 = useRef(), card = useRef() // prettier-ignore
-  const vec = new THREE.Vector3(), ang = new THREE.Vector3(), rot = new THREE.Vector3(), dir = new THREE.Vector3() // prettier-ignore
+function Band({ maxSpeed = 50, minSpeed = 10, isVisible }) {
+  const band = useRef(),
+    fixed = useRef(),
+    j1 = useRef(),
+    j2 = useRef(),
+    j3 = useRef(),
+    card = useRef();
+  const vec = new THREE.Vector3(),
+    ang = new THREE.Vector3(),
+    rot = new THREE.Vector3(),
+    dir = new THREE.Vector3();
   const segmentProps = {
     type: "dynamic",
     canSleep: true,
@@ -90,10 +118,13 @@ function Band({ maxSpeed = 50, minSpeed = 10 }) {
   const [dragged, drag] = useState(false);
   const [hovered, hover] = useState(false);
 
-  useRopeJoint(fixed, j1, [[0, 0, 0], [0, 0, 0], 1]) // prettier-ignore
-  useRopeJoint(j1, j2, [[0, 0, 0], [0, 0, 0], 1]) // prettier-ignore
-  useRopeJoint(j2, j3, [[0, 0, 0], [0, 0, 0], 1]) // prettier-ignore
-  useSphericalJoint(j3, card, [[0, 0, 0], [0, 1.45, 0]]) // prettier-ignore
+  useRopeJoint(fixed, j1, [[0, 0, 0], [0, 0, 0], 1]);
+  useRopeJoint(j1, j2, [[0, 0, 0], [0, 0, 0], 1]);
+  useRopeJoint(j2, j3, [[0, 0, 0], [0, 0, 0], 1]);
+  useSphericalJoint(j3, card, [
+    [0, 0, 0],
+    [0, 1.45, 0],
+  ]);
 
   useEffect(() => {
     if (hovered) {
@@ -142,6 +173,14 @@ function Band({ maxSpeed = 50, minSpeed = 10 }) {
       card.current.setAngvel({ x: ang.x, y: ang.y - rot.y * 0.25, z: ang.z });
     }
   });
+
+  // Reset animation if the page is not visible
+  useEffect(() => {
+    if (!isVisible) {
+      // Reset logic or animation states
+      band.current.geometry.setPoints(curve.getPoints(32)); // Reset the curve points or any other needed reset
+    }
+  }, [isVisible, curve]); // Add `curve` to the dependency array
 
   curve.curveType = "chordal";
   texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
@@ -221,11 +260,13 @@ function Band({ maxSpeed = 50, minSpeed = 10 }) {
 Band.propTypes = {
   maxSpeed: PropTypes.number,
   minSpeed: PropTypes.number,
+  isVisible: PropTypes.bool,
 };
 
 Band.defaultProps = {
   maxSpeed: 50,
   minSpeed: 10,
+  isVisible: true,
 };
 
 export default Lanyard;

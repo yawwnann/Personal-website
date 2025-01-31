@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import Header from "./Header/Header";
 import HeroSection from "./home/HeroSection";
 import BackgroundImages from "./home/BackgroundImages";
 import RunningText from "./home/RunningText";
@@ -10,7 +9,9 @@ import Contact from "./Contact/Contact";
 import Aos from "aos";
 import ContainerScroll from "./Project/Scroll/container-scroll-demo";
 import VelocityText from "./Project/VelocityText/VelocityText";
-import HeroParallaxDemo from "./Project/ui_design/Ui_parallax"; // Import HeroParallaxDemo
+import HeroParallaxDemo from "./Project/ui_design/Ui_parallax";
+import Navbar from "./Header/Header";
+import GlobeLocationCard from "./home/GlobeLocationCard";
 
 const roles = ["Graphic Designer", "Web Developer", "UI/UX Designer"];
 const runningText =
@@ -80,9 +81,12 @@ export const Home = () => {
 
   return (
     <div className="text-white bg-black flex flex-col items-center">
-      <Header className="fixed top-0 left-0 w-full bg-black z-50" />
-      <div className="absolute top-[70px] left-0 w-full h-full bg-gradient-balls z-0"></div>
+      <div className="absolute left-0 w-full h-full bg-gradient-balls z-0"></div>
+      <Navbar />
       <HeroSection displayedText={displayedText} />
+      <div className="absolute bottom-20 -left-20 z-50 flex items-center p-4 rounded-lg shadow-lg">
+        <GlobeLocationCard />
+      </div>
       <BackgroundImages />
       <RunningText runningText={runningText} />
 
@@ -96,7 +100,7 @@ export const Home = () => {
       <div id="project" className="w-full py-16">
         <Project />
       </div>
-      {/* Tambahkan HeroParallaxDemo dengan Margin */}
+
       <div id="ui-parallax" className="w-full mt-16 py-16 z-100">
         <HeroParallaxDemo />
       </div>

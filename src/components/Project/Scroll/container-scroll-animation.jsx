@@ -2,7 +2,6 @@ import React, { useRef } from "react";
 import PropTypes from "prop-types";
 import { useScroll, useTransform, motion } from "framer-motion";
 
-// Component utama: ContainerScroll
 export const ContainerScroll = ({ titleComponent, children }) => {
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({

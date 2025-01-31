@@ -1,25 +1,20 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   motion,
   useMotionTemplate,
   useMotionValue,
   useSpring,
 } from "framer-motion";
-import AOS from "aos";
+
 import "aos/dist/aos.css";
 
 const AboutSection = () => {
   const text = `I am a creative, persistent, and adaptive individual, with the ability to think innovatively and be solution-oriented. Experienced in the Technology Field, I am always open to new learning and committed to producing quality work. With a combination of good problem-solving and communication skills, I am able to work collaboratively and independently, and complete each project effectively and efficiently.`;
   const words = text.split(" ");
 
-  useEffect(() => {
-    AOS.init({
-      duration: 1200,
-      once: false,
-    });
-  }, []);
+  const [isVisible, setIsVisible] = useState(false);
 
   const containerVariants = {
     hidden: { opacity: 0.5, scale: 0.9, y: 50 },
@@ -31,7 +26,7 @@ const AboutSection = () => {
         duration: 1,
         ease: "easeInOut",
         when: "beforeChildren",
-        staggerChildren: 0.05, // Animasi antar kata
+        staggerChildren: 0.05,
       },
     },
   };
@@ -91,11 +86,31 @@ const AboutSection = () => {
     requestAnimationFrame(animate);
   }, []);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true); // Ketika AboutSection terlihat, mulai animasi
+        } else {
+          setIsVisible(false); // Reset animasi jika elemen keluar viewport
+        }
+      },
+      { threshold: 0.5 } // Elemen terlihat 50% untuk mulai animasi
+    );
+
+    const aboutSection = document.querySelector("#about");
+    if (aboutSection) observer.observe(aboutSection);
+
+    return () => {
+      if (aboutSection) observer.unobserve(aboutSection);
+    };
+  }, []);
+
   return (
     <motion.section
       className="relative bg-black text-black w-full py-16 px-6 flex flex-col items-center justify-center"
       initial="hidden"
-      animate="visible"
+      animate={isVisible ? "visible" : "hidden"} // Menunggu hingga elemen terlihat untuk animasi
       variants={containerVariants}
     >
       {/* Background Marquee Text */}
