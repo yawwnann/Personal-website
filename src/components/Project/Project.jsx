@@ -25,7 +25,7 @@ const projects = [
   {
     title: "Toko Sepatu",
     description:
-      "Proyek ini adalah sebuah website E-Commerce yang dibuat untuk memudahkan pengguna dalam membeli sepatu secara online",
+      "Proyek ini adalah sebuah website E-Commerce yang dibuat untuk memudahkan pengguna ",
     image: "./img/Project3/Nayshop.png",
     link: "https://github.com/yawwnann/Nayhsop/tree/main",
     github: "https://github.com/yawwnann/Nayhsop/tree/main",
@@ -59,10 +59,13 @@ const ThreeDCardDemo = () => {
   const [resetAnimation, setResetAnimation] = useState(0);
 
   useEffect(() => {
-    AOS.init({ duration: 1000 }); // Inisialisasi AOS
+    AOS.init({
+      duration: 1000,
+      once: false,
+      easing: "ease-in-out-quad",
+    });
   }, []);
 
-  // Reset animasi setiap kali halaman dikunjungi kembali
   useEffect(() => {
     const handleVisibilityChange = () => {
       if (document.visibilityState === "visible") {
@@ -75,65 +78,91 @@ const ThreeDCardDemo = () => {
   }, []);
 
   return (
-    <div key={resetAnimation}>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1">
-        {/* Header */}
-        <div className="col-span-full text-center mb-4" data-aos="fade-up">
-          <h1 className="text-4xl font-semibold text-orange-500">
-            Unleash the power of <br />
-            <span className="text-4xl md:text-[6rem] text-white font-bold mt-1 leading-none">
-              My Project
+    <div
+      key={resetAnimation}
+      className="max-w-7xl mx-auto px-4 sm:px-6 bg-black lg:px-8"
+    >
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+        {/* Header Responsive */}
+        <div
+          className="col-span-full text-center mb-8 md:mb-12"
+          data-aos="fade-up"
+        >
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-orange-500">
+            Unleash the power of <br className="hidden sm:block" />
+            <span className="text-3xl sm:text-4xl md:text-6xl lg:text-[5rem] text-white font-bold mt-1 leading-tight">
+              My Projects
             </span>
           </h1>
         </div>
+
         {/* Project Cards */}
         {projects.map((project, index) => (
           <div
             key={index}
-            data-aos="fade-up" // Animasi masuk seragam
-            data-aos-delay={index * 100} // Delay berbeda untuk setiap kartu
+            className="w-full h-full" // Tambahkan h-full di sini
+            data-aos="fade-up"
+            data-aos-offset="100"
+            data-aos-easing="ease-in-sine"
+            data-aos-delay={index * 50}
           >
-            <CardContainer className="inter-var mb-3">
-              <CardBody className="bg-gray-500 relative group/card dark:hover:shadow-xl dark:hover:shadow-orange-500/[0.4] dark:bg-black dark:border-white/[0.2] border-white  h-[390px] w-[400px] rounded-xl -mt-6 p-4 border-4">
-                <CardItem
-                  translateZ="50"
-                  className="text-xl font-bold text-neutral-600 dark:text-white"
-                >
-                  {project.title}
-                </CardItem>
-                <CardItem
-                  as="p"
-                  translateZ="60"
-                  className="text-neutral-500 text-sm max-w-sm dark:text-neutral-300"
-                >
-                  {project.description}
-                </CardItem>
-                <CardItem translateZ="100" className="w-full mt-4">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="h-48 w-full object-cover rounded-xl group-hover/card:shadow-xl hover:shadow-md hover:shadow-orange-500"
-                  />
-                </CardItem>
-                <div className="flex justify-between items-center mt-8">
+            <CardContainer className="inter-var w-full h-auto">
+              <CardBody className="bg-gray-500/20 relative group/card hover:shadow-xl hover:shadow-orange-500/30 dark:bg-black dark:border-white/20 border-white/30 h-full min-h-[500px] w-full rounded-xl p-4 sm:p-6 border-2 sm:border-4 transition-all duration-300 flex flex-col">
+                {/* Content Area */}
+                <div className="flex-1">
                   <CardItem
-                    translateZ={20}
-                    as="a"
-                    href={project.link}
-                    target="_blank"
-                    className="px-4 py-2 rounded-xl text-xs font-normal dark:text-white"
+                    translateZ="50"
+                    className="text-xl md:text-2xl font-bold text-white mb-2"
                   >
-                    View Project →
+                    {project.title}
                   </CardItem>
+
                   <CardItem
-                    translateZ={20}
-                    as="a"
-                    href={project.github}
-                    target="_blank"
-                    className="text-xs font-normal text-gray-600 dark:text-white flex items-center"
+                    as="p"
+                    translateZ="60"
+                    className="text-gray-300 text-sm md:text-base mb-4"
                   >
-                    <FaGithub className="text-lg mr-2" /> GitHub
+                    {project.description}
                   </CardItem>
+
+                  <CardItem
+                    translateZ="100"
+                    className="w-full h-48 sm:h-56 md:h-64"
+                  >
+                    <div className="relative w-full h-full rounded-xl overflow-hidden">
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-full object-cover transition-transform duration-300 group-hover/card:scale-105"
+                      />
+                    </div>
+                  </CardItem>
+                </div>
+
+                {/* Button Container */}
+                <div className="mt-auto pt-4">
+                  <div className="flex justify-between items-center gap-2">
+                    <CardItem
+                      translateZ={20}
+                      as="a"
+                      href={project.link}
+                      target="_blank"
+                      className="px-4 py-2 rounded-lg bg-orange-500/80 hover:bg-orange-500 text-white text-sm md:text-base flex-1 text-center transition-all duration-200"
+                    >
+                      View Project →
+                    </CardItem>
+
+                    <CardItem
+                      translateZ={20}
+                      as="a"
+                      href={project.github}
+                      target="_blank"
+                      className="px-4 py-2 rounded-lg bg-gray-700/50 hover:bg-gray-700 text-white text-sm md:text-base flex-1 text-center transition-all duration-200 flex items-center justify-center"
+                    >
+                      <FaGithub className="text-xl mr-2" />
+                      GitHub
+                    </CardItem>
+                  </div>
                 </div>
               </CardBody>
             </CardContainer>

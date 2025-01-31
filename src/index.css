@@ -408,3 +408,26 @@ header {
 .animate-spin-slow {
   animation: spin-slow 5s linear infinite;
 }
+
+/* =========================================
+  Responsive
+========================================= */
+/* Untuk layar mobile (lebar kurang dari 640px) */
+@media (max-width: 640px) {
+  .character-image {
+    width: 70vw;
+    height: 70vw;
+    top: 10vh;
+    left: 5%;
+  }
+  .hand-image {
+    width: 80vw;
+    height: 80vw;
+  }
+}
+@media (max-width: 640px) {
+  .marquee-container-skills-left,
+  .marquee-container-skills-right {
+    animation-duration: 20s !important;
+  }
+}

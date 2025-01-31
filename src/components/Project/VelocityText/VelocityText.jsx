@@ -14,7 +14,7 @@ const VelocityText = () => {
 
   const scrollVelocity = useVelocity(scrollYProgress);
 
-  const skewXRaw = useTransform(scrollVelocity, [-1, 1], ["50deg", "-50deg"]);
+  const skewXRaw = useTransform(scrollVelocity, [-1, 1], ["60deg", "-60deg"]);
   const skewX = useSpring(skewXRaw, { mass: 2, stiffness: 150, damping: 30 });
 
   const xRaw = useTransform(scrollYProgress, [0, 1], [0, -1000]);

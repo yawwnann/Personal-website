@@ -50,103 +50,90 @@ const Marquee = () => {
     });
   }, []);
   return (
-    <div className="overflow-hidden border-2 border-white rotate-4 mt-8 hover:shadow-md hover:shadow-orange-500  ">
-      {/* ini ke kiri */}
-      <div className="marquee-container-skills-left  z-10 flex gap-8 whitespace-nowrap text-white">
-        {/* Menampilkan logo aplikasi secara manual */}
-        <div className="flex items-center py-3 px-2 space-x-2 font-poppins text-lg   hover-effect">
-          <i className="devicon-vscode-plain text-2xl text-orange-500 sm:text-3xl lg:text-4xl" />
-          <span>VSCode</span>
-        </div>
-        <div className="flex items-center py-3 px-2 space-x-2 font-poppins text-lg   hover-effect">
-          <i className="devicon-git-plain text-2xl text-orange-500 sm:text-3xl lg:text-4xl" />
-          <span>Git</span>
-        </div>
-        <div className="flex items-center py-3 px-2 space-x-2 font-poppins text-lg   hover-effect">
-          <i className="devicon-photoshop-plain text-2xl text-orange-500 sm:text-3xl lg:text-4xl" />
-          <span>Photoshop</span>
-        </div>
-        <div className="flex items-center py-3 px-2 space-x-2 font-poppins text-lg   hover-effect">
-          <i className="devicon-illustrator-plain text-2xl text-orange-500 sm:text-3xl lg:text-4xl" />
-          <span>Illustrator</span>
-        </div>
-        <div className="flex items-center py-3 px-2 space-x-2 font-poppins text-lg   hover-effect">
-          <i className="devicon-premierepro-plain text-2xl text-orange-500 sm:text-3xl lg:text-4xl" />
-          <span>Premiere Pro</span>
-        </div>
-        <div className="flex items-center py-3 px-2 space-x-2 font-poppins text-lg   hover-effect">
-          <i className="devicon-aftereffects-plain text-2xl text-orange-500 sm:text-3xl lg:text-4xl" />
-          <span>After Effects</span>
-        </div>
-        <div className="flex items-center py-3 px-2 space-x-2 font-poppins text-lg   hover-effect">
-          <i className="devicon-canva-plain text-2xl text-orange-500 sm:text-3xl lg:text-4xl" />
-          <span>Canva</span>
-        </div>
-        <div className="flex items-center py-3 px-2 space-x-2 font-poppins text-lg   hover-effect">
-          <i className="devicon-figma-plain text-2xl text-orange-500 sm:text-3xl lg:text-4xl" />
-          <span>Figma</span>
-        </div>
-        <div className="flex items-center py-3 px-2 space-x-2 font-poppins text-lg   hover-effect">
-          <i className="devicon-jupyter-plain text-2xl text-orange-500 sm:text-3xl lg:text-4xl" />
-          <span>Jupyter</span>
-        </div>
-        <div className="flex items-center py-3 px-2 space-x-2 font-poppins text-lg   hover-effect">
-          <i className="bi bi-file-earmark-word-fill  text-2xl text-orange-500 sm:text-3xl lg:text-4xl"></i>
-          <span>Word</span>
-        </div>
-        <div className="flex items-center py-3 px-2 space-x-2 font-poppins text-lg   hover-effect">
-          <i className="bi bi-file-earmark-excel-fill text-2xl text-orange-500 sm:text-3xl lg:text-4xl"></i>
-          <span>Excel</span>
-        </div>
+    <div className="overflow-hidden border-2 border-white  mt-4 sm:mt-6 md:mt-8 hover:shadow-md hover:shadow-orange-500">
+      {/* Marquee kiri */}
+      <div className="marquee-container-skills-left z-10 flex gap-4 sm:gap-6 md:gap-8 whitespace-nowrap text-white">
+        {[...Array(2)].map((_, idx) => (
+          <div
+            key={idx}
+            className="flex items-center py-2 px-2 sm:py-3 sm:px-3 space-x-1 sm:space-x-2 font-poppins text-sm sm:text-base md:text-lg"
+          >
+            <i className="devicon-vscode-plain text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] text-orange-500" />
+            <span>VSCode</span>
+
+            <i className="devicon-git-plain text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] text-orange-500" />
+            <span>Git</span>
+
+            <i className="devicon-photoshop-plain text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] text-orange-500" />
+            <span>Photoshop</span>
+
+            <i className="devicon-illustrator-plain text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] text-orange-500" />
+            <span>Illustrator</span>
+
+            <i className="devicon-premierepro-plain text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] text-orange-500" />
+            <span>Premiere Pro</span>
+
+            <i className="devicon-aftereffects-plain text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] text-orange-500" />
+            <span>After Effects</span>
+
+            <i className="devicon-canva-plain text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] text-orange-500" />
+            <span>Canva</span>
+
+            <i className="devicon-figma-plain text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] text-orange-500" />
+            <span>Figma</span>
+
+            <i className="devicon-jupyter-plain text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] text-orange-500" />
+            <span>Jupyter</span>
+
+            <i className="bi bi-file-earmark-word-fill text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] text-orange-500" />
+            <span>Word</span>
+
+            <i className="bi bi-file-earmark-excel-fill text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] text-orange-500" />
+            <span>Excel</span>
+          </div>
+        ))}
       </div>
 
-      {/* ini ke kanan */}
-      <div className="marquee-container-skills-right flex gap-8 whitespace-nowrap text-white">
-        {/* Menampilkan logo aplikasi secara manual */}
-        <div className="flex items-center py-3 px-2 space-x-2 font-poppins text-lg   hover-effect">
-          <i className="devicon-vscode-plain text-2xl text-orange-500 sm:text-3xl lg:text-4xl" />
-          <span>VSCode</span>
-        </div>
-        <div className="flex items-center py-3 px-2 space-x-2 font-poppins text-lg   hover-effect">
-          <i className="devicon-git-plain text-2xl text-orange-500 sm:text-3xl lg:text-4xl" />
-          <span>Git</span>
-        </div>
-        <div className="flex items-center py-3 px-2 space-x-2 font-poppins text-lg   hover-effect">
-          <i className="devicon-photoshop-plain text-2xl text-orange-500 sm:text-3xl lg:text-4xl" />
-          <span>Photoshop</span>
-        </div>
-        <div className="flex items-center py-3 px-2 space-x-2 font-poppins text-lg   hover-effect">
-          <i className="devicon-illustrator-plain text-2xl text-orange-500 sm:text-3xl lg:text-4xl" />
-          <span>Illustrator</span>
-        </div>
-        <div className="flex items-center py-3 px-2 space-x-2 font-poppins text-lg   hover-effect">
-          <i className="devicon-premierepro-plain text-2xl text-orange-500 sm:text-3xl lg:text-4xl" />
-          <span>Premiere Pro</span>
-        </div>
-        <div className="flex items-center py-3 px-2 space-x-2 font-poppins text-lg   hover-effect">
-          <i className="devicon-aftereffects-plain text-2xl text-orange-500 sm:text-3xl lg:text-4xl" />
-          <span>After Effects</span>
-        </div>
-        <div className="flex items-center py-3 px-2 space-x-2 font-poppins text-lg   hover-effect">
-          <i className="devicon-canva-plain text-2xl text-orange-500 sm:text-3xl lg:text-4xl" />
-          <span>Canva</span>
-        </div>
-        <div className="flex items-center py-3 px-2 space-x-2 font-poppins text-lg   hover-effect">
-          <i className="devicon-figma-plain text-2xl text-orange-500 sm:text-3xl lg:text-4xl" />
-          <span>Figma</span>
-        </div>
-        <div className="flex items-center py-3 px-2 space-x-2 font-poppins text-lg   hover-effect">
-          <i className="devicon-jupyter-plain text-2xl text-orange-500 sm:text-3xl lg:text-4xl" />
-          <span>Jupyter</span>
-        </div>
-        <div className="flex items-center py-3 px-2 space-x-2 font-poppins text-lg   hover-effect">
-          <i className="bi bi-file-earmark-word-fill  text-2xl text-orange-500 sm:text-3xl lg:text-4xl"></i>
-          <span>Word</span>
-        </div>
-        <div className="flex items-center py-3 px-2 space-x-2 font-poppins text-lg   hover-effect">
-          <i className="bi bi-file-earmark-excel-fill text-2xl text-orange-500 sm:text-3xl lg:text-4xl"></i>
-          <span>Excel</span>
-        </div>
+      <div className="marquee-container-skills-right z-10 flex gap-4 sm:gap-6 md:gap-8 whitespace-nowrap text-white">
+        {[...Array(2)].map((_, idx) => (
+          <div
+            key={idx}
+            className="flex items-center py-2 px-2 sm:py-3 sm:px-3 space-x-1 sm:space-x-2 font-poppins text-sm sm:text-base md:text-lg"
+          >
+            <i className="devicon-vscode-plain text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] text-orange-500" />
+            <span>VSCode</span>
+
+            <i className="devicon-git-plain text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] text-orange-500" />
+            <span>Git</span>
+
+            <i className="devicon-photoshop-plain text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] text-orange-500" />
+            <span>Photoshop</span>
+
+            <i className="devicon-illustrator-plain text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] text-orange-500" />
+            <span>Illustrator</span>
+
+            <i className="devicon-premierepro-plain text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] text-orange-500" />
+            <span>Premiere Pro</span>
+
+            <i className="devicon-aftereffects-plain text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] text-orange-500" />
+            <span>After Effects</span>
+
+            <i className="devicon-canva-plain text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] text-orange-500" />
+            <span>Canva</span>
+
+            <i className="devicon-figma-plain text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] text-orange-500" />
+            <span>Figma</span>
+
+            <i className="devicon-jupyter-plain text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] text-orange-500" />
+            <span>Jupyter</span>
+
+            <i className="bi bi-file-earmark-word-fill text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] text-orange-500" />
+            <span>Word</span>
+
+            <i className="bi bi-file-earmark-excel-fill text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] text-orange-500" />
+            <span>Excel</span>
+          </div>
+        ))}
       </div>
     </div>
   );

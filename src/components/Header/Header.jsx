@@ -137,38 +137,38 @@ export default function Navbar() {
       {/* Button to open */}
       <button
         ref={buttonRef}
-        onClick={handleToggleMenu} // Panggil handleToggleMenu untuk menambahkan kontrol animasi
+        onClick={handleToggleMenu}
         onMouseEnter={() => handleButtonHover(true)}
         onMouseLeave={() => handleButtonHover(false)}
-        className="p-3 bg-orange-500 text-black rounded-full shadow-lg fixed top-5 right-5 flex items-center justify-center w-16 h-16 z-50 border border-gray-700"
+        className="p-3 bg-orange-500 text-black rounded-full shadow-lg fixed top-5 right-5 flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 z-50 border border-gray-700"
       >
-        <img src="/YN.png" alt="Menu" className="w-8 h-8" />
+        <img src="/YN.png" alt="Menu" className="w-6 h-6 sm:w-8 sm:h-8" />
       </button>
 
       {isVisible && (
         <div
           ref={menuRef}
-          className={`fixed top-0 right-0 h-full w-80 bg-gray-50 text-white p-6 shadow-lg flex flex-col z-50 border-l border-gray-800`}
+          className={`fixed top-0 right-0 h-full w-64 sm:w-80 bg-gray-50 text-white p-4 sm:p-6 shadow-lg flex flex-col z-50 border-l border-gray-800`}
         >
           <button
             ref={xButtonRef}
             onClick={() => setIsOpen(false)}
             onMouseEnter={handleXHover}
             onMouseLeave={handleXMouseLeave}
-            className="absolute top-4 right-4 p-2 bg-transparent rounded-full border-2 border-gray-500 flex items-center justify-center"
+            className="absolute top-4 right-4 p-2 bg-transparent rounded-full border-2 border-gray-700 flex items-center justify-center w-10 h-10 transition-all"
           >
-            <X size={32} className="text-gray-700" />
+            <X size={28} className="text-gray-800" />
           </button>
 
-          <h2 className="text-lg text-gray-700 font-semibold mt-11 mb-4 border-b border-gray-700 pb-2">
+          <h2 className="text-lg text-gray-700 font-semibold mt-8 sm:mt-11 mb-4 border-b border-gray-700 pb-2">
             Navigation
           </h2>
-          <ul className="space-y-4 text-6xl">
+          <ul className="space-y-4 text-4xl sm:text-6xl">
             {[
               { label: "Home", id: "home" },
               { label: "About", id: "about" },
               { label: "Skills", id: "skills" },
-              { label: "Projects", id: "projects" },
+              { label: "Projects", id: "project" },
               { label: "Contact", id: "contact" },
             ].map((item, index) => (
               <li key={index}>
@@ -190,15 +190,18 @@ export default function Navbar() {
           </ul>
 
           {/* Menambahkan bagian Links di bawah Navigation dengan Flex */}
-          <h2 className="text-lg  text-gray-700 font-semibold mt-11 mb-4 border-b border-gray-700 pb-2">
+          <h2 className="text-lg text-gray-700 font-semibold mt-8 sm:mt-11 mb-4 border-b border-gray-700 pb-2">
             Links
           </h2>
           <div className="flex gap-4">
             {[
               { label: "Github", url: "https://github.com/yawwnann" },
-              { label: "Linkedin", url: "https://www.linkedin.com/yuwananta" },
+              {
+                label: "Linkedin",
+                url: "https://www.linkedin.com/in/yuwa-nanta-562341249/",
+              },
               { label: "Instagram", url: "https://www.instagram.com/yawwnan" },
-              { label: "Tiktok", url: "https://www.tiktok.com/yawwnan" },
+              { label: "Tiktok", url: "https://www.tiktok.com/@yawwnan" },
             ].map((item, index) => (
               <a
                 key={index}

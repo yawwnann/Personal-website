@@ -3,8 +3,8 @@ import { motion } from "framer-motion";
 import { useEffect, useRef, forwardRef } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import AOS from "aos"; // Import AOS
-import "aos/dist/aos.css"; // Import AOS styles
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -68,7 +68,7 @@ const HeroSection = ({ displayedText }) => {
         </div>
 
         <motion.h1
-          className="text-4xl sm:text-5xl lg:text-6xl mt-4 font-extrabold mb-4 font-[Poppins]"
+          className="text-3xl sm:text-4xl lg:text-5xl mt-4 font-extrabold mb-4 font-[Poppins]"
           data-aos="fade-right"
         >
           <span>I am </span>
@@ -79,14 +79,14 @@ const HeroSection = ({ displayedText }) => {
             Nanta
           </motion.span>
           <br />
-          <motion.span className="text-4xl sm:text-5xl lg:text-6xl transition-transform transform hover:scale-110 duration-500 mt-4 ease-in-out hover:cursor-default">
+          <motion.span className="text-3xl sm:text-4xl lg:text-5xl transition-transform transform hover:scale-110 duration-500 mt-4 ease-in-out hover:cursor-default">
             {displayedText}
           </motion.span>
           <span className="caret"></span>
         </motion.h1>
 
         <motion.p
-          className="text-base sm:text-lg lg:text-xl mb-6 font-[Press Start 2P]"
+          className="text-sm sm:text-base lg:text-lg mb-6 font-[Poppins]"
           data-aos="fade-left"
           whileHover={{ scale: 1.05, y: -5 }}
         >
@@ -158,7 +158,5 @@ SpotlightButton.displayName = "SpotlightButton";
 HeroSection.propTypes = {
   displayedText: PropTypes.string.isRequired,
 };
-
-SpotlightButton.propTypes = {};
 
 export default HeroSection;

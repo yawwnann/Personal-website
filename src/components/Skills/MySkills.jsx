@@ -74,31 +74,30 @@ const ClipPathLinks = () => {
       data-aos="fade-up"
     >
       <div className="grid grid-cols-3 divide-x divide-white">
-        <LinkBox Icon={FaReact} name="React" href="#" />
-        <LinkBox Icon={FaNodeJs} name="Node.js" href="#" />
+        <LinkBox Icon={FaReact} name="React" />
+        <LinkBox Icon={FaNodeJs} name="Node.js" />
         <LinkBox
           Icon={() => (
             <i className="devicon-cplusplus-plain text-4xl text-white" />
           )}
           name="C++"
-          href="#"
         />
       </div>
       <div className="grid grid-cols-4 divide-x divide-white">
-        <LinkBox Icon={FaPython} name="Python" href="#" />
-        <LinkBox Icon={FaGitAlt} name="Git" href="#" />
-        <LinkBox Icon={FaBootstrap} name="Bootstrap" href="#" />
-        <LinkBox Icon={FaPhp} name="PHP" href="#" />
+        <LinkBox Icon={FaPython} name="Python" />
+        <LinkBox Icon={FaGitAlt} name="Git" />
+        <LinkBox Icon={FaBootstrap} name="Bootstrap" />
+        <LinkBox Icon={FaPhp} name="PHP" />
       </div>
       <div className="grid grid-cols-4 divide-x divide-white">
-        <LinkBox Icon={FaFigma} name="Figma" href="#" />
-        <LinkBox Icon={FaCss3Alt} name="CSS" href="#" />
-        <LinkBox Icon={FaLaravel} name="Laravel" href="#" />
-        <LinkBox Icon={FaDatabase} name="Mysql" href="#" />
+        <LinkBox Icon={FaFigma} name="Figma" />
+        <LinkBox Icon={FaCss3Alt} name="CSS" />
+        <LinkBox Icon={FaLaravel} name="Laravel" />
+        <LinkBox Icon={FaDatabase} name="Mysql" />
       </div>
       <div className="grid grid-cols-2 divide-x divide-white">
-        <LinkBox Icon={FaJs} name="JavaScript" href="#" />
-        <LinkBox Icon={FaCss3} name="Tailwind" href="#" />
+        <LinkBox Icon={FaJs} name="JavaScript" />
+        <LinkBox Icon={FaCss3} name="Tailwind" />
       </div>
     </div>
   );

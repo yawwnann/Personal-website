@@ -44,7 +44,7 @@ export const HeroParallax = ({ products }) => {
   return (
     <div
       ref={ref}
-      className="h-[330vh] py-40 overflow-hidden antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
+      className="h-[300vh] py-40  antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
     >
       <Header />
       <motion.div
@@ -99,11 +99,11 @@ HeroParallax.propTypes = {
 
 export const Header = () => {
   return (
-    <div className="max-w-7xl relative mx-auto py-20 md:py-40 px-4 w-full left-0 top-0">
-      <h1 className="text-2xl md:text-7xl font-bold dark:text-white">
+    <div className="max-w-7xl relative mx-auto py-12 sm:py-20 md:py-32 lg:py-40 px-4 sm:px-6 lg:px-8 w-full left-0 top-0">
+      <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold dark:text-white">
         UI / UX DESIGN
       </h1>
-      <p className="max-w-2xl text-base md:text-xl mt-8 dark:text-neutral-200">
+      <p className="max-w-2xl text-sm sm:text-base md:text-lg lg:text-xl mt-4 sm:mt-6 md:mt-8 dark:text-neutral-200">
         UI/UX design is about creating seamless, intuitive experiences that
         focus on the user’s needs. By combining functionality with creativity, I
         design interfaces that are easy to navigate, visually engaging, and
@@ -122,9 +122,13 @@ export const ProductCard = ({ product, translate }) => {
         x: translate,
       }}
       whileHover={{
-        y: -20,
+        y:
+          typeof window !== "undefined" &&
+          window.matchMedia("(hover: hover)").matches
+            ? -20
+            : 0,
       }}
-      className="group/product h-80 w-[40rem] relative flex-shrink-0"
+      className="group/product h-64 sm:h-72 md:h-80 w-full sm:w-[90%] md:w-[40rem] relative flex-shrink-0"
     >
       <a
         href={product.link}
@@ -134,12 +138,12 @@ export const ProductCard = ({ product, translate }) => {
       >
         <img
           src={product.thumbnail}
-          className="object-cover object-left-top absolute h-full w-full inset-0"
+          className="object-cover sm:object-left-top object-center absolute h-full w-full inset-0"
           alt={product.title}
         />
       </a>
-      <div className="absolute inset-0 h-full w-full opacity-0 group-hover/product:opacity-80 bg-black pointer-events-none"></div>
-      <h2 className="absolute bottom-4 left-4 opacity-0 group-hover/product:opacity-100 text-white">
+      <div className="absolute inset-0 h-full w-full opacity-0 group-hover/product:opacity-80 bg-transparency pointer-events-none transition-opacity duration-300" />
+      <h2 className="absolute bottom-4 left-4 opacity-0 group-hover/product:opacity-100 text-white text-sm sm:text-base md:text-lg transition-opacity duration-300">
         {product.title}
       </h2>
     </motion.div>

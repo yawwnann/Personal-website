@@ -1,16 +1,24 @@
 const BackgroundImages = () => (
   <>
     <div
-      className="character-image absolute top-[-300px] mr-10 right-1/2 transform translate-x-1/2 w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] lg:w-[500px] lg:h-[500px] mt-80 mb-8 z-1"
+      className="character-image absolute top-[15vh] left-[10%] w-[50vw] h-[50vw] max-w-[300px] max-h-[300px] sm:max-w-[400px] sm:max-h-[400px] lg:max-w-[500px] lg:max-h-[500px] z-1"
       data-aos="slide-right"
     >
-      <img src="./img/Saly-13.png" alt="Character" className="animation-loop" />
+      <img
+        src="./img/Saly-13.png"
+        alt="Character"
+        className="animation-loop w-full h-full object-contain"
+      />
     </div>
     <div
-      className="hand-image absolute bottom-0 left-1/2 transform -translate-x-1/2 w-[400px] h-[400px] sm:w-[500px] sm:h-[500px] lg:w-[600px] lg:h-[600px]"
+      className="hand-image absolute bottom-0 left-1/2 transform -translate-x-1/2 w-[60vw] h-[60vw] max-w-[400px] max-h-[400px] sm:max-w-[500px] sm:max-h-[500px] lg:max-w-[600px] lg:max-h-[600px] hidden sm:block"
       data-aos="slide-left"
     >
-      <img src="./img/Saly-8.png" alt="Hand" className="animation-move" />
+      <img
+        src="./img/Saly-8.png"
+        alt="Hand"
+        className="animation-move w-full h-full object-contain"
+      />
     </div>
   </>
 );
