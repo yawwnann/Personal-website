@@ -22,7 +22,7 @@ const ContactPage = () => {
       {/* Modal Notification */}
       {showModal && (
         <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-          <div className="bg-gray-900 rounded-xl p-8 max-w-md w-full relative border border-orange-500/30">
+          <div className="bg-gray-900 rounded-xl p-6 max-w-sm sm:max-w-md w-full relative border border-orange-500/30">
             <button
               onClick={() => setShowModal(false)}
               className="absolute top-4 right-4 text-gray-400 hover:text-orange-500 transition-colors"
@@ -30,8 +30,10 @@ const ContactPage = () => {
               <FaTimes className="text-2xl" />
             </button>
             <div className="text-center space-y-4">
-              <h3 className="text-3xl font-bold text-orange-500">Oops! 😅</h3>
-              <p className="text-gray-300 text-lg">
+              <h3 className="text-2xl sm:text-3xl font-bold text-orange-500">
+                Oops! 😅
+              </h3>
+              <p className="text-gray-300 text-base sm:text-lg">
                 Ups! Backendnya belum selesai bang, sabar ya.😉
               </p>
             </div>
@@ -40,20 +42,20 @@ const ContactPage = () => {
       )}
 
       {/* Form Section */}
-      <div className="w-full md:w-3/5 p-6 md:p-10 flex flex-col justify-center bg-black rounded-lg m-4 md:m-6">
-        <div className="text-center mb-8 md:mb-10">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+      <div className="w-full md:w-3/5 p-6 sm:px-6 md:px-10 flex flex-col justify-center bg-black rounded-lg m-4 md:m-6">
+        <div className="text-center md:text-left mb-6 sm:mb-8">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3 sm:mb-4">
             Contact Me
           </h1>
-          <p className="text-gray-300 md:text-lg">
+          <p className="text-gray-300 text-base sm:text-lg">
             Got a question or proposal? Don’t hesitate to reach out! Just fill
             in the form below.
           </p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-5">
           {/* Input Fields */}
-          <div className="flex flex-col md:flex-row gap-4">
+          <div className="flex flex-col gap-4">
             {/* Full Name Input */}
             <div className="flex items-center border border-gray-700 rounded-lg px-4 py-3 w-full group focus-within:border-orange-500 transition-colors">
               <FaUser className="text-orange-500 mr-2 text-lg" />
@@ -75,7 +77,7 @@ const ContactPage = () => {
             </div>
           </div>
 
-          <div className="flex flex-col md:flex-row gap-4">
+          <div className="flex flex-col gap-4">
             {/* Phone Input */}
             <div className="flex items-center border border-gray-700 rounded-lg px-4 py-3 w-full group focus-within:border-orange-500 transition-colors">
               <FaPhone className="text-orange-500 mr-2 text-lg" />
@@ -109,7 +111,7 @@ const ContactPage = () => {
           <div className="text-center">
             <button
               type="submit"
-              className="bg-orange-500 hover:bg-orange-600 text-white font-medium px-8 py-3 rounded-full transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2 mx-auto"
+              className="bg-orange-500 hover:bg-orange-600 text-white font-medium px-6 sm:px-8 py-3 text-sm sm:text-base rounded-full transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2 mx-auto"
             >
               <span>Send Message</span>
               <FaPaperPlane className="text-lg" />

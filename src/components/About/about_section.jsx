@@ -108,7 +108,7 @@ const AboutSection = () => {
 
   return (
     <motion.section
-      className="relative bg-black text-black w-full py-16 px-6 flex flex-col items-center justify-center"
+      className="relative bg-gray-900 text-black w-full py-16 px-6 flex flex-col items-center justify-center"
       initial="hidden"
       animate={isVisible ? "visible" : "hidden"} // Menunggu hingga elemen terlihat untuk animasi
       variants={containerVariants}

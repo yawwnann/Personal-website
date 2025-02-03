@@ -9,10 +9,7 @@ import Contact from "./Contact/Contact";
 import Aos from "aos";
 import Navbar from "./Header/Header";
 
-// Lazy-loaded components
-const ContainerScroll = lazy(() =>
-  import("./Project/Scroll/container-scroll-demo")
-);
+const ContainerScroll = lazy(() => import("./Project/Scroll/container-scroll"));
 const VelocityText = lazy(() => import("./Project/VelocityText/VelocityText"));
 const HeroParallaxDemo = lazy(() => import("./Project/ui_design/Ui_parallax"));
 const GlobeLocationCard = lazy(() => import("./home/GlobeLocationCard"));
@@ -84,9 +81,9 @@ export const Home = () => {
   }, []);
 
   return (
-    <div className="text-white bg-black flex flex-col items-center overflow-x-hidden">
+    <div className="text-white bg-gray-900 flex flex-col items-center overflow-x-hidden">
       <div className="absolute left-0 w-full h-full bg-gradient-balls z-0"></div>
-      <div className="w-full pl-4 sm:pl-8">
+      <div className="w-full pl-4 sm:pl-8 z-[999]">
         <Navbar />
       </div>
       <HeroSection displayedText={displayedText} />

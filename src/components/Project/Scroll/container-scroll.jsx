@@ -17,7 +17,6 @@ const HeroScrollDemo = () => {
           </>
         }
       >
-        {/* Menambahkan gambar GitHub */}
         <div className="relative flex items-center justify-center h-full">
           <img
             src="/img/Desain.png"

@@ -12,7 +12,7 @@ export default function GlobeLocationCard() {
           Indonesia.
         </p>
       </div>
-      <div className="flex-shrink-0 p-2 sm:p-3 rounded-full ml-2 sm:ml-4 bg-black">
+      <div className="flex-shrink-0 p-2 sm:p-3 rounded-full ml-2 sm:ml-4 bg-gray-900">
         <Globe className="w-8 h-8 sm:w-10 sm:h-10 md:w-14 md:h-14 text-orange-500 animate-spin-slow" />
       </div>
     </div>

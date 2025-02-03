@@ -21,7 +21,7 @@ const VelocityText = () => {
   const x = useSpring(xRaw, { mass: 2, stiffness: 150, damping: 30 });
 
   return (
-    <section ref={targetRef} className="bg-black text-white">
+    <section ref={targetRef} className="bg-gray-900 text-white">
       <div className="sticky top-0 flex items-center overflow-hidden">
         {/* Marquee Container */}
         <div className="marquee-container relative flex overflow-hidden whitespace-nowrap">

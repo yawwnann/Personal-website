@@ -80,7 +80,7 @@ const ThreeDCardDemo = () => {
   return (
     <div
       key={resetAnimation}
-      className="max-w-7xl mx-auto px-4 sm:px-6 bg-black lg:px-8"
+      className="max-w-7xl mx-auto px-4 sm:px-6 bg-gray-900 lg:px-8"
     >
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
         {/* Header Responsive */}
@@ -100,14 +100,14 @@ const ThreeDCardDemo = () => {
         {projects.map((project, index) => (
           <div
             key={index}
-            className="w-full h-full" // Tambahkan h-full di sini
+            className="w-full h-full"
             data-aos="fade-up"
             data-aos-offset="100"
             data-aos-easing="ease-in-sine"
             data-aos-delay={index * 50}
           >
-            <CardContainer className="inter-var w-full h-auto">
-              <CardBody className="bg-gray-500/20 relative group/card hover:shadow-xl hover:shadow-orange-500/30 dark:bg-black dark:border-white/20 border-white/30 h-full min-h-[500px] w-full rounded-xl p-4 sm:p-6 border-2 sm:border-4 transition-all duration-300 flex flex-col">
+            <CardContainer className="inter-var w-full h-auto bg-gray-900 overflow-hidden z-100">
+              <CardBody className="bg-gray-900 relative group/card hover:shadow-xl hover:shadow-orange-500/30 dark:bg-gray-900 dark:border-white/20 border-white/30 h-full min-h-[500px] w-full rounded-xl p-4 sm:p-6 border-2 sm:border-4 transition-all duration-300 flex flex-col">
                 {/* Content Area */}
                 <div className="flex-1">
                   <CardItem

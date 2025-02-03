@@ -1,7 +1,7 @@
 "use client";
 import { useRef } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
-import PropTypes from "prop-types"; // Import PropTypes
+import PropTypes from "prop-types";
 
 export const HeroParallax = ({ products }) => {
   const firstRow = products.slice(0, 5);

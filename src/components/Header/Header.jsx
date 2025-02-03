@@ -114,9 +114,9 @@ export default function Navbar() {
 
   const handleXHover = () => {
     gsap.to(xButtonRef.current, {
-      rotation: 45, // Rotasi X 45 derajat
-      scale: 1.2, // Perbesar tombol X
-      backgroundColor: "#ff5733", // Ubah warna latar belakang tombol X
+      rotation: 45,
+      scale: 1.2,
+      backgroundColor: "#ff5733",
       duration: 0.3,
       ease: "power2.out",
     });
@@ -124,8 +124,8 @@ export default function Navbar() {
 
   const handleXMouseLeave = () => {
     gsap.to(xButtonRef.current, {
-      rotation: 0, // Kembali ke posisi semula
-      scale: 1, // Kembalikan ukuran
+      rotation: 0,
+      scale: 1,
       backgroundColor: "transparent",
       duration: 0.3,
       ease: "power2.out",
@@ -133,14 +133,14 @@ export default function Navbar() {
   };
 
   return (
-    <div className="relative overflow-hidden z-50">
+    <div className="relative overflow-hidden z-100">
       {/* Button to open */}
       <button
         ref={buttonRef}
         onClick={handleToggleMenu}
         onMouseEnter={() => handleButtonHover(true)}
         onMouseLeave={() => handleButtonHover(false)}
-        className="p-3 bg-orange-500 text-black rounded-full shadow-lg fixed top-5 right-5 flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 z-50 border border-gray-700"
+        className="p-3 bg-orange-500 text-black rounded-full shadow-lg fixed top-5 right-5 flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 z-50 border border-slate-50"
       >
         <img src="/YN.png" alt="Menu" className="w-6 h-6 sm:w-8 sm:h-8" />
       </button>
@@ -148,7 +148,7 @@ export default function Navbar() {
       {isVisible && (
         <div
           ref={menuRef}
-          className={`fixed top-0 right-0 h-full w-64 sm:w-80 bg-gray-50 text-white p-4 sm:p-6 shadow-lg flex flex-col z-50 border-l border-gray-800`}
+          className={`navbar fixed top-0 right-0 h-full w-64 sm:w-80 bg-gray-50 text-white p-4 sm:p-6 shadow-lg flex flex-col z-50 border-l border-gray-800`}
         >
           <button
             ref={xButtonRef}

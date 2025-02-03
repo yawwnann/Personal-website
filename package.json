@@ -1,9 +1,12 @@
 {
+  "homepage": "https://yawwnann.github.io/Personal-website",
   "name": "reactjs",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
@@ -13,7 +16,7 @@
     "@heroicons/react": "^2.2.0",
     "@mui/icons-material": "^6.4.0",
     "@mui/material": "^6.4.0",
-    "@react-three/drei": "^9.121.3",
+    "@react-three/drei": "^9.121.4",
     "@react-three/fiber": "^8.17.12",
     "@react-three/rapier": "^1.5.0",
     "@tabler/icons-react": "^3.28.1",
@@ -65,8 +68,11 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.18",
     "gh-pages": "^6.3.0",
+    "patch-package": "^8.0.0",
     "postcss": "^8.5.1",
+    "postinstall-postinstall": "^2.1.0",
     "rollup-plugin-visualizer": "^5.14.0",
+    "string-replace-loader": "^3.1.0",
     "tailwindcss": "^3.4.17",
     "typescript": "^5.7.3",
     "vite": "^4.4.10"

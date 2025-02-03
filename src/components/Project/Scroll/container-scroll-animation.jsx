@@ -1,7 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { useScroll, useTransform, motion } from "framer-motion";
-// Pindahkan komponen Header ke atas sebelum digunakan
+
 const Header = ({ translate, titleComponent }) => {
   return (
     <motion.div
@@ -35,7 +35,6 @@ export const ContainerScroll = ({ titleComponent, children }) => {
     return () => window.removeEventListener("resize", checkTouchDevice);
   }, []);
 
-  // Animasi yang lebih halus dengan easing function
   const scale = useTransform(
     scrollYProgress,
     [0, 1],
@@ -56,7 +55,7 @@ export const ContainerScroll = ({ titleComponent, children }) => {
     isTouchDevice ? [0, -30] : [0, -100],
     {
       clamp: false,
-      ease: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Custom easing
+      ease: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
     }
   );
 
@@ -86,7 +85,7 @@ export const ContainerScroll = ({ titleComponent, children }) => {
   );
 };
 
-const Card = ({ rotate, scale, translate, children, isTouchDevice }) => {
+const Card = ({ rotate, scale, translate, isTouchDevice }) => {
   return (
     <motion.div
       style={{
@@ -100,18 +99,19 @@ const Card = ({ rotate, scale, translate, children, isTouchDevice }) => {
           ? "0 4px 6px rgba(0, 0, 0, 0.1)"
           : "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
       }}
-      className={`max-w-5xl mx-auto ${
-        isTouchDevice
-          ? "h-[25rem] sm:h-[35rem] md:h-[45rem] lg:h-[50rem]"
-          : "h-[50rem] sm:h-[35rem] md:h-[60rem] lg:h-[65rem]"
-      } w-full border-4 border-[#6C6C6C] p-2 md:p-6 bg-[#222222] rounded-[30px]`}
+      className="max-w-5xl mx-auto w-auto h-auto border-4 border-[#6C6C6C] p-2 md:p-6 bg-[#222222] rounded-[30px]"
     >
-      <div className="h-full w-full bg-gray-100 dark:bg-zinc-900 p-4">
-        {children}
+      <div className="flex items-center justify-center w-full h-auto bg-gray-100 dark:bg-zinc-900 p-4">
+        <img
+          src="/img/Desain.png"
+          alt="Content"
+          className="w-auto h-auto max-w-full max-h-full object-contain"
+        />
       </div>
     </motion.div>
   );
 };
+
 // Prop Types
 ContainerScroll.propTypes = {
   titleComponent: PropTypes.node,
