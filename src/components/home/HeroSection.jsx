@@ -73,7 +73,7 @@ const HeroSection = () => {
         </motion.h1>
 
         <motion.p
-          className="text-sm sm:text-base lg:text-lg m-6 italic font-[Poppins]"
+          className="text-sm sm:text-base lg:text-lg m-6 italic "
           data-aos="fade-left"
           whileHover={{ scale: 1.05, y: -5 }}
         >
