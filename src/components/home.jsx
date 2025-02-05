@@ -1,4 +1,5 @@
-import { useState, useEffect, Suspense, lazy } from "react";
+import { useEffect, Suspense, lazy } from "react";
+
 import HeroSection from "./home/HeroSection";
 import BackgroundImages from "./home/BackgroundImages";
 import RunningText from "./home/RunningText";
@@ -6,7 +7,7 @@ import AboutSection from "./About/about_section";
 import MySkills from "./Skills/MySkills";
 import Project from "./Project/Project";
 import Contact from "./Contact/Contact";
-import Aos from "aos";
+
 import Navbar from "./Header/Header";
 
 const ContainerScroll = lazy(() => import("./Project/Scroll/container-scroll"));
@@ -14,50 +15,10 @@ const VelocityText = lazy(() => import("./Project/VelocityText/VelocityText"));
 const HeroParallaxDemo = lazy(() => import("./Project/ui_design/Ui_parallax"));
 const GlobeLocationCard = lazy(() => import("./home/GlobeLocationCard"));
 
-const roles = ["Graphic Designer", "Web Developer", "UI/UX Designer"];
 const runningText =
   "✦   Full Stack Developer   ✦   Graphic Designer   ✦   Video Editing   ✦   UI/UX Design   ✦   Front End Developer   ✦  Back End Developer";
 
 export const Home = () => {
-  const [roleIndex, setRoleIndex] = useState(0);
-  const [displayedText, setDisplayedText] = useState("");
-  const [charIndex, setCharIndex] = useState(0);
-  const [isTyping, setIsTyping] = useState(true);
-
-  useEffect(() => {
-    Aos.init({ duration: 1000, once: false });
-  }, []);
-
-  useEffect(() => {
-    const currentRole = roles[roleIndex];
-
-    if (isTyping) {
-      if (charIndex < currentRole.length) {
-        const typingTimer = setTimeout(() => {
-          setDisplayedText((prev) => prev + currentRole[charIndex]);
-          setCharIndex(charIndex + 1);
-        }, 150);
-        return () => clearTimeout(typingTimer);
-      } else {
-        const pauseTimer = setTimeout(() => {
-          setIsTyping(false);
-        }, 3000);
-        return () => clearTimeout(pauseTimer);
-      }
-    } else {
-      if (charIndex > 0) {
-        const deletingTimer = setTimeout(() => {
-          setDisplayedText((prev) => prev.slice(0, -1));
-          setCharIndex(charIndex - 1);
-        }, 100);
-        return () => clearTimeout(deletingTimer);
-      } else {
-        setIsTyping(true);
-        setRoleIndex((prev) => (prev + 1) % roles.length);
-      }
-    }
-  }, [charIndex, isTyping, roleIndex]);
-
   useEffect(() => {
     const marqueeContainerLeft = document.querySelector(".marquee-container");
     if (marqueeContainerLeft) {
@@ -86,7 +47,8 @@ export const Home = () => {
       <div className="w-full pl-4 sm:pl-8 z-[999]">
         <Navbar />
       </div>
-      <HeroSection displayedText={displayedText} />
+
+      <HeroSection />
 
       <div className="absolute bottom-10 sm:bottom-20 -left-4 sm:-left-10 z-50 flex items-center p-2 sm:p-4 rounded-lg shadow-lg">
         <Suspense
@@ -109,7 +71,7 @@ export const Home = () => {
         <MySkills />
       </div>
 
-      <div id="project" className="w-full py-8 sm:py-16 ">
+      <div id="project" className="w-full py-8 sm:py-16">
         <Project />
       </div>
 

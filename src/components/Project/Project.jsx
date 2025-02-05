@@ -47,9 +47,10 @@ const projects = [
     github: "https://github.com/example/project3",
   },
   {
-    title: "Project 4",
-    description: "Proyek ini adalah percobaan untuk menampilkan data",
-    image: "./img/Project1/dashboard_user.png",
+    title: "Coming Soon",
+    description: "Coming soon",
+    image: "./img/comingsoon.png",
+    alt: "Coming soon",
     link: "https://example.com/project3",
     github: "https://github.com/example/project3",
   },
@@ -88,10 +89,10 @@ const ThreeDCardDemo = () => {
           className="col-span-full text-center mb-8 md:mb-12"
           data-aos="fade-up"
         >
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-orange-500">
-            Unleash the power of <br className="hidden sm:block" />
-            <span className="text-3xl sm:text-4xl md:text-6xl lg:text-[5rem] text-white font-bold mt-1 leading-tight">
-              My Projects
+          <h1 className="text-2xl sm:text-4xl md:text-5xl font-reguler text-white">
+            Unleash the power of <br />
+            <span className="text-5xl sm:text-4xl md:text-6xl lg:text-[5rem] text-white font-bold mt-1 leading-tight">
+              My <span className="text-orange-500 italic">Project</span>
             </span>
           </h1>
         </div>
@@ -126,21 +127,21 @@ const ThreeDCardDemo = () => {
                   </CardItem>
 
                   <CardItem
-                    translateZ="100"
+                    translateZ="150"
                     className="w-full h-48 sm:h-56 md:h-64"
                   >
-                    <div className="relative w-full h-full rounded-xl overflow-hidden">
+                    <div className="relative w-full h-full rounded-xl ">
                       <img
                         src={project.image}
                         alt={project.title}
-                        className="w-full h-full object-cover transition-transform duration-300 group-hover/card:scale-105"
+                        className="w-full h-full object-cover transition-transform duration-300 rounded-xl group-hover/card:scale-105"
                       />
                     </div>
                   </CardItem>
                 </div>
 
                 {/* Button Container */}
-                <div className="mt-auto pt-4">
+                <div className="mt-auto md:mt-0 sm:mt-0 pt-4">
                   <div className="flex justify-between items-center gap-2">
                     <CardItem
                       translateZ={20}

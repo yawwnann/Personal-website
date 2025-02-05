@@ -2,27 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-  box-sizing: border-box;
-  scroll-behavior: smooth;
-}
 html,
-body,
-#root {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
+body {
+  overflow: auto;
 }
 
 body {
   background-color: #252525;
-  overflow-x: hidden;
+  font-family: "Poppins", Arial, sans-serif;
 }
 canvas {
   display: block;
   width: 100vw;
   height: 100vh;
+}
+
+.fade-in {
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 /* =========================================

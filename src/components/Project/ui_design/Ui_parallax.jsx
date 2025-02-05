@@ -2,8 +2,10 @@ import HeroParallax from "./hero_Parallax";
 
 export function HeroParallaxDemo() {
   return (
-    <div className="min-h-screen w-full z-10 mt-60  ">
-      <div className="absolute -mt-60 left-0 w-full">
+    <div className="relative min-h-screen w-full ">
+      {" "}
+      {/* overflow-hidden di sini */}
+      <div className="absolute inset-0">
         <HeroParallax products={products} />
       </div>
     </div>

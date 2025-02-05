@@ -45,7 +45,7 @@ const ContactPage = () => {
       <div className="w-full md:w-3/5 p-6 sm:px-6 md:px-10 flex flex-col justify-center bg-black rounded-lg m-4 md:m-6">
         <div className="text-center md:text-left mb-6 sm:mb-8">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3 sm:mb-4">
-            Contact Me
+            Contact <span className="text-orange-500">Me</span>
           </h1>
           <p className="text-gray-300 text-base sm:text-lg">
             Got a question or proposal? Don’t hesitate to reach out! Just fill

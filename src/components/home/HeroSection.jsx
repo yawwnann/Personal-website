@@ -1,92 +1,79 @@
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
-import { useEffect, useRef, forwardRef } from "react";
+import { useEffect, useRef, forwardRef, useState } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import AOS from "aos";
+
 import "aos/dist/aos.css";
 
 gsap.registerPlugin(ScrollTrigger);
+const roles = ["Graphic Designer", "Web Developer", "UI/UX Designer"];
 
-const HeroSection = ({ displayedText }) => {
-  const containerRef = useRef(null);
-  const textRef = useRef(null);
-  const buttonRef = useRef(null);
+const HeroSection = () => {
+  const [roleIndex, setRoleIndex] = useState(0);
+  const roleTextRef = useRef(null);
 
   useEffect(() => {
-    const tl = gsap.timeline();
-    tl.fromTo(
-      containerRef.current,
-      { opacity: 0, y: -50 },
-      { opacity: 1, y: 0, duration: 1.5, ease: "power4.out" }
-    )
-      .fromTo(
-        textRef.current,
-        { opacity: 0, y: 50 },
-        { opacity: 1, y: 0, duration: 1.5, ease: "power4.out" },
-        "<"
-      )
-      .fromTo(
-        buttonRef.current,
-        { scale: 0 },
-        { scale: 1, duration: 1, ease: "back.out(1.7)" },
-        "-=1"
+    if (roleTextRef.current) {
+      gsap.fromTo(
+        roleTextRef.current,
+        { clipPath: "inset(0% 100% 0% 0%)", opacity: 0 },
+        {
+          clipPath: "inset(0% 0% 0% 0%)",
+          opacity: 1,
+          duration: 1,
+          ease: "power3.out",
+          onComplete: () => {
+            setTimeout(() => {
+              gsap.to(roleTextRef.current, {
+                clipPath: "inset(0% 0% 0% 100%)",
+                opacity: 0,
+                duration: 2,
+                ease: "power3.in",
+                onComplete: () => {
+                  setRoleIndex((prevIndex) => (prevIndex + 1) % roles.length);
+                },
+              });
+            }, 4000);
+          },
+        }
       );
-  }, []);
-
-  useEffect(() => {
-    gsap.to(textRef.current, {
-      yPercent: -20,
-      ease: "power1.out",
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: "top center",
-        end: "bottom top",
-        scrub: 0.5,
-      },
-    });
-  }, []);
-
-  useEffect(() => {
-    AOS.init({
-      duration: 1200,
-      easing: "ease-in-out",
-      once: true,
-    });
-  }, []);
+    }
+  }, [roleIndex]);
 
   return (
     <div
       className="relative min-h-screen flex flex-col z-10 items-center justify-center px-4 sm:px-6 lg:px-8"
       id="home"
-      ref={containerRef}
       data-aos="fade-up"
     >
-      <motion.div ref={textRef} className="text-center max-w-3xl">
-        <div data-aos="zoom-in">
-          <SpotlightButton ref={buttonRef} />
-        </div>
-
+      <motion.div className="text-center max-w-3xl">
         <motion.h1
-          className="text-3xl sm:text-4xl lg:text-5xl mt-4 font-extrabold mb-4 font-[Poppins]"
+          className="text-3xl sm:text-4xl lg:text-5xl mt-4 font-extrabold mb-1 font-sans"
           data-aos="fade-right"
         >
           <span>I am </span>
           <motion.span
-            className="text-orange-500 transition-transform transform hover:scale-110 duration-500 ease-in-out"
+            className="text-orange-500 transition-transform italic font-bold transform hover:scale-110 duration-500 ease-in-out"
             whileHover={{ scale: 1.2 }}
           >
             Nanta
           </motion.span>
           <br />
-          <motion.span className="text-3xl sm:text-4xl lg:text-5xl transition-transform transform hover:scale-110 duration-500 mt-4 ease-in-out hover:cursor-default">
-            {displayedText}
+          <motion.span className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl transition-transform transform hover:scale-110 duration-500  ease-in-out hover:cursor-default">
+            <div className="text-center  p-3">
+              <h2
+                ref={roleTextRef}
+                className="role-text text-4xl sm:text-8xl md:text-8xl lg:text-7xl xl:text-7xl font-extrabold font-sans"
+              >
+                {roles[roleIndex]}
+              </h2>
+            </div>
           </motion.span>
-          <span className="caret"></span>
         </motion.h1>
 
         <motion.p
-          className="text-sm sm:text-base lg:text-lg mb-6 font-[Poppins]"
+          className="text-sm sm:text-base lg:text-lg m-6 italic font-[Poppins]"
           data-aos="fade-left"
           whileHover={{ scale: 1.05, y: -5 }}
         >

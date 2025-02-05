@@ -3,16 +3,15 @@ import { ContainerScroll } from "./container-scroll-animation";
 
 const HeroScrollDemo = () => {
   return (
-    <div className="flex flex-col mt-[1000px] ">
+    <div className="flex flex-col mt-[1200px]   ">
       <ContainerScroll
         titleComponent={
           <>
-            <h1 className="text-4xl font-semibold text-black dark:text-white">
+            <span className="text-md md:text-[3rem] font-reguler text-black dark:text-white">
               Changing Perspectives Through Bold Design.
-              <br />
-              <span className="text-4xl md:text-[6rem] font-bold mt-1 leading-none">
-                Graphic Design
-              </span>
+            </span>
+            <h1 className="text-4xl md:text-[6rem] font-bold mt-1 leading-none">
+              Graphic Design
             </h1>
           </>
         }

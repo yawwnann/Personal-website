@@ -133,8 +133,7 @@ export default function Navbar() {
   };
 
   return (
-    <div className="relative overflow-hidden z-100">
-      {/* Button to open */}
+    <div className="relative  z-100">
       <button
         ref={buttonRef}
         onClick={handleToggleMenu}

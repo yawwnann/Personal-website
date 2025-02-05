@@ -33,7 +33,7 @@ const MySkills = () => {
       <div className="mx-auto max-w-7xl text-center mb-8" data-aos="fade-up">
         <h1 className="text-6xl font-bold text-white font-poppins">
           <span className="text-orange-500 ">My </span>
-          <span>Skills</span>
+          <span className="italic">Skills</span>
         </h1>
         <p className="text-lg text-gray-300 mt-2 font-poppins">
           The skills, tools and technologies I am really good at:
@@ -56,10 +56,14 @@ const MySkills = () => {
         className="mt-8 text-center font-poppins text-4xl"
         data-aos="fade-up"
       >
-        <h2 className="font-bold">
-          <span className="text-orange-500 ">Development & Productivity</span>
+        <h2 className="">
+          <span className="text-orange-500 text-2xl ">
+            Development & Productivity
+          </span>
           <br />
-          <span>Tools I Use</span>
+          <span className="font-bold text-5xl">
+            Tools <span className="text-orange-500 italic">I Use</span>
+          </span>
         </h2>
         <Tools />
       </div>

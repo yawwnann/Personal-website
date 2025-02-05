@@ -114,7 +114,7 @@ const AboutSection = () => {
       variants={containerVariants}
     >
       {/* Background Marquee Text */}
-      <div className="absolute inset-0 w-full h-full overflow-hidden">
+      <div className="absolute inset-0 w-full h-full italic overflow-hidden">
         <div className="marquee-container-about-right whitespace-nowrap text-[9rem] font-extrabold tracking-wide text-gray-200 opacity-10">
           GRAPHIC DESIGNER &nbsp; GRAPHIC DESIGNER &nbsp;
         </div>
@@ -122,7 +122,7 @@ const AboutSection = () => {
           WEB DEVELOPER &nbsp; WEB DEVELOPER &nbsp;
         </div>
         <div className="marquee-container-about-right whitespace-nowrap text-[9rem] font-extrabold tracking-wide text-gray-200 opacity-10">
-          UI/UX DEVELOPER &nbsp; UI/UX DEVELOPER &nbsp;
+          UI/UX DESIGNER &nbsp; UI/UX DESIGNER &nbsp;
         </div>
       </div>
 
@@ -146,7 +146,7 @@ const AboutSection = () => {
           data-aos="fade-up"
         >
           <h2 className="text-4xl font-bold text-white mb-4">
-            About <span className="text-orange-500">Me</span>
+            About <span className="text-orange-500 italic">Me</span>
           </h2>
           {/* Elemen <p> dengan animasi yang diperbaiki */}
           <motion.p
