@@ -1,4 +1,4 @@
-import { useEffect, Suspense, lazy } from "react";
+import { useEffect } from "react";
 
 import HeroSection from "./home/HeroSection";
 import BackgroundImages from "./home/BackgroundImages";
@@ -7,13 +7,12 @@ import AboutSection from "./About/about_section";
 import MySkills from "./Skills/MySkills";
 import Project from "./Project/Project";
 import Contact from "./Contact/Contact";
-
 import Navbar from "./Header/Header";
 
-const ContainerScroll = lazy(() => import("./Project/Scroll/container-scroll"));
-const VelocityText = lazy(() => import("./Project/VelocityText/VelocityText"));
-const HeroParallaxDemo = lazy(() => import("./Project/ui_design/Ui_parallax"));
-const GlobeLocationCard = lazy(() => import("./home/GlobeLocationCard"));
+import ContainerScroll from "./Project/Scroll/container-scroll";
+import VelocityText from "./Project/VelocityText/VelocityText";
+import HeroParallaxDemo from "./Project/ui_design/Ui_parallax";
+import GlobeLocationCard from "./home/GlobeLocationCard";
 
 const runningText =
   "✦   Full Stack Developer   ✦   Graphic Designer   ✦   Video Editing   ✦   UI/UX Design   ✦   Front End Developer   ✦  Back End Developer";
@@ -51,13 +50,7 @@ export const Home = () => {
       <HeroSection />
 
       <div className="absolute bottom-10 sm:bottom-20 -left-4 sm:-left-10 z-50 flex items-center p-2 sm:p-4 rounded-lg shadow-lg">
-        <Suspense
-          fallback={
-            <div className="w-24 h-24 bg-gray-800 rounded-lg animate-pulse" />
-          }
-        >
-          <GlobeLocationCard />
-        </Suspense>
+        <GlobeLocationCard />
       </div>
 
       <BackgroundImages />
@@ -79,32 +72,18 @@ export const Home = () => {
         id="ui-parallax"
         className="w-full mt-8 sm:mt-16 py-8 sm:py-16 z-[100]"
       >
-        <Suspense
-          fallback={
-            <div className="h-[40vh] bg-gradient-to-b from-gray-900 to-black animate-pulse" />
-          }
-        >
-          <HeroParallaxDemo />
-        </Suspense>
+        <HeroParallaxDemo />
       </div>
 
       <div
         id="ContainerScroll"
         className="w-full mt-20 sm:mt-40 lg:mt-80 py-8 sm:py-16"
       >
-        <Suspense
-          fallback={
-            <div className="h-[80vh] bg-gradient-to-b from-black to-gray-900 animate-pulse" />
-          }
-        >
-          <ContainerScroll />
-        </Suspense>
+        <ContainerScroll />
       </div>
 
       <div id="VelocityText" className="w-full py-8 sm:py-16">
-        <Suspense fallback={<div className="h-96 bg-gray-900 animate-pulse" />}>
-          <VelocityText />
-        </Suspense>
+        <VelocityText />
       </div>
 
       <div id="contact" className="w-full min-h-screen mt-8 sm:mt-16">
