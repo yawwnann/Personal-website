@@ -77,12 +77,12 @@ const ClipPathLinks = () => {
       className="divide-y divide-white border border-white"
       data-aos="fade-up"
     >
-      <div className="grid grid-cols-3 divide-x divide-white">
+      <div className="grid grid-cols-3 divide-x divide-white hover:text-black">
         <LinkBox Icon={FaReact} name="React" />
         <LinkBox Icon={FaNodeJs} name="Node.js" />
         <LinkBox
           Icon={() => (
-            <i className="devicon-cplusplus-plain text-4xl text-white" />
+            <i className="devicon-cplusplus-plain md:text-xl sm:text-md text-4xl text-white" />
           )}
           name="C++"
         />
