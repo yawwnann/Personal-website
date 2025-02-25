@@ -47,6 +47,14 @@ const projects = [
     github: "https://github.com/example/project3",
   },
   {
+    title: "Pradiwa - Kelola Sampah",
+    description:
+      "Website ini dibuat untuk melakukan pengelolaan sampah yang disetor",
+    image: "./img/project6/pradiwa_dashboard.png",
+    link: "https://example.com/project3",
+    github: "https://github.com/example/project3",
+  },
+  {
     title: "Coming Soon",
     description: "Coming soon",
     image: "./img/comingsoon.png",
