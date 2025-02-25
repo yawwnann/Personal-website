@@ -192,7 +192,7 @@ export default function Navbar() {
           <h2 className="text-lg text-gray-700 font-semibold mt-8 sm:mt-11 mb-4 border-b border-gray-700 pb-2">
             Links
           </h2>
-          <div className="flex gap-4">
+          <div className="flex flex-wrap gap-2 md:gap-4">
             {[
               { label: "Github", url: "https://github.com/yawwnann" },
               {
@@ -207,7 +207,7 @@ export default function Navbar() {
                 href={item.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-500 hover:text-gray-700"
+                className="text-sm md:text-base whitespace-nowrap text-gray-500 hover:text-gray-700 px-2 py-1 transition-colors duration-200"
               >
                 {item.label}
               </a>
