@@ -35,24 +35,24 @@ const projects = [
     description:
       "Website ini merupakan sebuah website yang berisikan portofolio dari project yang telah saya kerjakan",
     image: "./img/Project4/personal-web.png",
-    link: "https://example.com/project3",
-    github: "https://github.com/example/project3",
+    link: "yawwnan.my.id",
+    github: "https://github.com/yawwnann/Personal-website",
   },
   {
     title: "Website Perpustakaan",
     description:
       "Website ini dibuat untuk mengelola perpustakaan secara online",
     image: "./img/Project5/dashboard_perpus.png",
-    link: "https://example.com/project3",
-    github: "https://github.com/example/project3",
+    link: "https://github.com/yawwnann/Perpustakaan-web",
+    github: "https://github.com/yawwnann/Perpustakaan-web",
   },
   {
     title: "Pradiwa - Kelola Sampah",
     description:
       "Website ini dibuat untuk melakukan pengelolaan sampah yang disetor",
     image: "./img/project6/pradiwa_dashboard.png",
-    link: "https://example.com/project3",
-    github: "https://github.com/example/project3",
+    link: "https://github.com/yawwnann/Pradiwa-kelola-sampah",
+    github: "https://github.com/yawwnann/Pradiwa-kelola-sampah",
   },
   {
     title: "Coming Soon",
